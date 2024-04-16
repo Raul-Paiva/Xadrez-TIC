@@ -1,4 +1,6 @@
-﻿namespace Xadrez_TIC
+﻿using System;
+
+namespace Xadrez_TIC
 {
     public partial class MainPage : ContentPage
     {
@@ -11,7 +13,8 @@
 
         private void OnCounterClicked(object sender, EventArgs e)
         {
-            count++;
+            Random r = new Random();            
+            count += r.Next();
 
             if (count == 1)
                 CounterBtn.Text = $"Clicked {count} time";
