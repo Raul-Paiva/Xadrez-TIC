@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Xadrez_TIC.ViewModels;
 
 namespace Xadrez_TIC
 {
@@ -15,9 +15,11 @@ namespace Xadrez_TIC
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-#if DEBUG
-    		builder.Logging.AddDebug();
-#endif
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<MainViewModel>();
+
+            builder.Services.AddTransient<ChessPage>();
+            builder.Services.AddTransient<ChessViewModel>();
 
             return builder.Build();
         }
