@@ -25,177 +25,177 @@
 
 
         <StackLayout Grid.Row="1" Grid.Column="0">
-        <!-- Tabuleiro de Xadrez -->
-        <Grid x:Name="ChessBoard" Padding="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-            <!-- Linhas -->
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <!-- Colunas -->
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+            <!-- Tabuleiro de Xadrez -->
+            <Grid x:Name="ChessBoard" Padding="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <!-- Linhas -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!-- Colunas -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <!-- Posições Verdes -->
-            <Frame Grid.Row="0" Grid.Column="1" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="0" Grid.Column="3" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="0" Grid.Column="5" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="0" Grid.Column="7" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="1" Grid.Column="0" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="1" Grid.Column="2" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="1" Grid.Column="4" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="1" Grid.Column="6" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="2" Grid.Column="1" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="2" Grid.Column="3" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="2" Grid.Column="5" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="2" Grid.Column="7" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="3" Grid.Column="0" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="3" Grid.Column="2" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="3" Grid.Column="4" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="3" Grid.Column="6" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="4" Grid.Column="1" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="4" Grid.Column="3" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="4" Grid.Column="5" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="4" Grid.Column="7" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="5" Grid.Column="0" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="5" Grid.Column="2" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="5" Grid.Column="4" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="5" Grid.Column="6" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="6" Grid.Column="1" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="6" Grid.Column="3" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="6" Grid.Column="5" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="6" Grid.Column="7" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="7" Grid.Column="0" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="7" Grid.Column="2" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="7" Grid.Column="4" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Image Source="cavalo_b.png" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
-            </Frame>
-            <Frame Grid.Row="7" Grid.Column="6" CornerRadius="0" BorderColor="Green" BackgroundColor="Green">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
+                <!-- Posições Verdes -->
+                <Border Grid.Row="0" Grid.Column="1" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="0" Grid.Column="3" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="0" Grid.Column="5" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="0" Grid.Column="7" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="0" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="2" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="4" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="6" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="1" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="3" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="5" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="7" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="3" Grid.Column="0" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="3" Grid.Column="2" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="3" Grid.Column="4" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="3" Grid.Column="6" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="4" Grid.Column="1" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="4" Grid.Column="3" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="4" Grid.Column="5" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="4" Grid.Column="7" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="5" Grid.Column="0" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="5" Grid.Column="2" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="5" Grid.Column="4" BackgroundColor="Green">
+                    <Image Source="ponto.png" IsEnabled="False" IsVisible="False" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                </Border>
+                <Border Grid.Row="5" Grid.Column="6" BackgroundColor="Green">
+                    <Image Source="ponto.png" IsEnabled="False" IsVisible="False" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                </Border>
+                <Border Grid.Row="6" Grid.Column="1" BackgroundColor="Green">
+                    <Image Source="ponto.png" IsEnabled="False" IsVisible="False" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                </Border>
+                <Border Grid.Row="6" Grid.Column="3" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="6" Grid.Column="5" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="6" Grid.Column="7" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="7" Grid.Column="0" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="7" Grid.Column="2" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
+                <Border Grid.Row="7" Grid.Column="4" BackgroundColor="Green">
+                    <Image Source="cavalo_p.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                </Border>
+                <Border Grid.Row="7" Grid.Column="6" BackgroundColor="Green">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Border>
 
-            <!-- Posições Brancas -->
-            <Frame Grid.Row="0" Grid.Column="0" CornerRadius="0" BorderColor="White" BackgroundColor="White">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="0" Grid.Column="2" CornerRadius="0" BorderColor="White" BackgroundColor="White">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="0" Grid.Column="4" CornerRadius="0" BorderColor="White" BackgroundColor="White">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="0" Grid.Column="6" CornerRadius="0" BorderColor="White" BackgroundColor="White">
-                <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
-            </Frame>
-            <Frame Grid.Row="1" Grid.Column="1" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="1" Grid.Column="3" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="1" Grid.Column="5" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="1" Grid.Column="7" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="2" Grid.Column="0" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="2" Grid.Column="2" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="2" Grid.Column="4" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="2" Grid.Column="6" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="3" Grid.Column="1" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="3" Grid.Column="3" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="3" Grid.Column="5" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="3" Grid.Column="7" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="4" Grid.Column="0" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="4" Grid.Column="2" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="4" Grid.Column="4" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="4" Grid.Column="6" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="5" Grid.Column="1" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="5" Grid.Column="3" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="5" Grid.Column="5" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="5" Grid.Column="7" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="6" Grid.Column="0" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="6" Grid.Column="2" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="6" Grid.Column="4" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="6" Grid.Column="6" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="7" Grid.Column="1" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="7" Grid.Column="3" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="7" Grid.Column="5" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-            <Frame Grid.Row="7" Grid.Column="7" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
-        </Grid>
-    </StackLayout>
+                <!-- Posições Brancas -->
+                <Frame Grid.Row="0" Grid.Column="0" CornerRadius="0" BorderColor="White" BackgroundColor="White">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="2" CornerRadius="0" BorderColor="White" BackgroundColor="White">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="4" CornerRadius="0" BorderColor="White" BackgroundColor="White">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="6" CornerRadius="0" BorderColor="White" BackgroundColor="White">
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" IsVisible="True" Text="s"/>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="1" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="1" Grid.Column="3" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="1" Grid.Column="5" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="1" Grid.Column="7" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="2" Grid.Column="0" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="2" Grid.Column="2" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="2" Grid.Column="4" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="2" Grid.Column="6" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="3" Grid.Column="1" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="3" Grid.Column="3" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="3" Grid.Column="5" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="3" Grid.Column="7" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="4" Grid.Column="0" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="4" Grid.Column="2" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="4" Grid.Column="4" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="4" Grid.Column="6" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="5" Grid.Column="1" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="5" Grid.Column="3" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="5" Grid.Column="5" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="5" Grid.Column="7" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="6" Grid.Column="0" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="6" Grid.Column="2" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="6" Grid.Column="4" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="6" Grid.Column="6" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="7" Grid.Column="1" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="7" Grid.Column="3" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="7" Grid.Column="5" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+                <Frame Grid.Row="7" Grid.Column="7" CornerRadius="0" BorderColor="White" BackgroundColor="White"/>
+            </Grid>
+        </StackLayout>
 
 
 
         <StackLayout Grid.Row="2" Grid.Column="0">
-            
-        </StackLayout> 
+
+        </StackLayout>
     </Grid>
 </ContentPage>
