@@ -23,6 +23,7 @@ namespace Xadrez_TIC
 
             builder.Services.AddTransient<ChessPage>();
             builder.Services.AddTransient<ChessViewModel>();
+           
 #if WINDOWS
             builder.ConfigureLifecycleEvents(events =>
             {

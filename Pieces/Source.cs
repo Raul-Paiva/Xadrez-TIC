@@ -7,26 +7,26 @@ namespace Xadrez_TIC.Pieces
     //Local onde estao as pecas
     public static class Source
     {
-        public static string PiecesSource(PiecesList p, Color c)
+        public static string PiecesSource(PiecesNames p, Color c)
         {
             switch (p)
             {
-                case PiecesList.Bispo:
+                case PiecesNames.Bispo:
                     if (Color.White == c) return "bispo_b.png";
                     else return "bispo_p.png";
-                case PiecesList.Rei:
+                case PiecesNames.Rei:
                     if (Color.White == c) return "rei_b.png";
                     else return "rei_p.png";
-                case PiecesList.Dama:
+                case PiecesNames.Dama:
                     if (Color.White == c) return "rainha_b.png";
                     else return "rainha_p.png";
-                case PiecesList.Cavalo:
+                case PiecesNames.Cavalo:
                     if (Color.White == c) return "cavalo_b.png";
                     else return "cavalo_p.png";
-                case PiecesList.Peao:
+                case PiecesNames.Peao:
                     if (Color.White == c) return "peao_b.png";
                     else return "peao_p.png";
-                case PiecesList.Torre:
+                case PiecesNames.Torre:
                     if (Color.White == c) return "torre_b.png";
                     else return "torre_p.png";
                 default:

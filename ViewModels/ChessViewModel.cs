@@ -5,5 +5,6 @@ namespace Xadrez_TIC.ViewModels
 {
     public partial class ChessViewModel : ObservableObject
     {
+        
     }
 }

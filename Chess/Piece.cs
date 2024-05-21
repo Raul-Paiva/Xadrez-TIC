@@ -1,9 +1,11 @@
-﻿namespace Xadrez_TIC.Chess
+﻿using Color = Xadrez_TIC.Enums.Color;
+
+namespace Xadrez_TIC.Chess
 {
     abstract class Piece
     {
         public Position? posicao { get; set; }
-        public Color color { get; protected set; }
+        public Enums.Color color { get; protected set; }
         public int nMoves { get; protected set; }
         public Board tab { get; protected set; }
 

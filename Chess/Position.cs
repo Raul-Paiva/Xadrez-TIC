@@ -1,6 +1,8 @@
-﻿namespace Xadrez_TIC.Chess
+﻿using Color = Xadrez_TIC.Enums.Color;
+
+namespace Xadrez_TIC.Chess
 {
-    internal class Position
+    public class Position
     {
         public int row { get; set; }
         public int column { get; set; }
@@ -17,7 +19,7 @@
         private Position(int row, char column) { }
 
         //Cor da posicao no tabuleiro, ou seja, dos quadrados
-        public Enums.Color Color()
+        public Enums.Color PositionColor()
         {
             string position = ToString();
 
@@ -47,6 +49,9 @@
             + ","
             + column;
         }
+
+
+
 
         public class Chess : Position
         {

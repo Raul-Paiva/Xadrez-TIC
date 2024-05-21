@@ -3,7 +3,7 @@
 namespace Xadrez_TIC.Enums
 {
     //Lista das pecas
-    public enum PiecesList
+    public enum PiecesNames
     {
         Cavalo,
         Rei,
