@@ -31,62 +31,62 @@ namespace Xadrez_TIC.Pieces {
 
             if (color == Color.White) {
                 pos.DefineNewValues(position.row - 1, position.column);
-                if (tab.IsPositionValid (pos) && free(pos)) {
+                if (pos.IsPositionValid() && free(pos)) {
                     mat[pos.row, pos.column] = true;
                 }
                 pos.DefineNewValues(position.row - 2, position.column);
                 Position p2 = new Position(position.row - 1, position.column);
-                if (tab.IsPositionValid(p2) && free(p2) && tab.IsPositionValid(pos) && free(pos) && nMoves == 0) {
+                if (p2.IsPositionValid() && free(p2) && pos.IsPositionValid() && free(pos) && nMoves == 0) {
                     mat[pos.row, pos.column] = true;
                 }
                 pos.DefineNewValues(position.row - 1, position.column - 1);
-                if (tab.IsPositionValid(pos) && existeInimigo(pos)) {
+                if (pos.IsPositionValid() && existeInimigo(pos)) {
                     mat[pos.row, pos.column] = true;
                 }
                 pos.DefineNewValues(position.row - 1, position.column + 1);
-                if (tab.IsPositionValid(pos) && existeInimigo(pos)) {
+                if (pos.IsPositionValid() && existeInimigo(pos)) {
                     mat[pos.row, pos.column] = true;
                 }
 
                 // #jogadaespecial en passant
                 if (position.row == 3) {
                     Position esquerda = new Position(position.row, position.column - 1);
-                    if (tab.IsPositionValid(esquerda) && existeInimigo(esquerda) && tab.PiecePosition(esquerda) == partida.EnPassant) {
+                    if (esquerda.IsPositionValid() && existeInimigo(esquerda) && tab.PiecePosition(esquerda) == partida.EnPassant) {
                         mat[esquerda.row - 1, esquerda.column] = true;
                     }
                     Position direita = new Position(position.row, position.column + 1);
-                    if (tab.IsPositionValid(direita) && existeInimigo(direita) && tab.PiecePosition(direita) == partida.EnPassant) {
+                    if (direita.IsPositionValid() && existeInimigo(direita) && tab.PiecePosition(direita) == partida.EnPassant) {
                         mat[direita.row - 1, direita.column] = true;
                     }
                 }
             }
             else {
                 pos.DefineNewValues(position.row + 1, position.column);
-                if (tab.IsPositionValid(pos) && free(pos)) {
+                if (pos.IsPositionValid() && free(pos)) {
                     mat[pos.row, pos.column] = true;
                 }
                 pos.DefineNewValues(position.row + 2, position.column);
                 Position p2 = new Position(position.row + 1, position.column);
-                if (tab.IsPositionValid(p2) && free(p2) && tab.IsPositionValid(pos) && free(pos) && nMoves == 0) {
+                if (p2.IsPositionValid() && free(p2) && pos.IsPositionValid() && free(pos) && nMoves == 0) {
                     mat[pos.row, pos.column] = true;
                 }
                 pos.DefineNewValues(position.row + 1, position.column - 1);
-                if (tab.IsPositionValid(pos) && existeInimigo(pos)) {
+                if (pos.IsPositionValid() && existeInimigo(pos)) {
                     mat[pos.row, pos.column] = true;
                 }
                 pos.DefineNewValues(position.row + 1, position.column + 1);
-                if (tab.IsPositionValid(pos) && existeInimigo(pos)) {
+                if (pos.IsPositionValid() && existeInimigo(pos)) {
                     mat[pos.row, pos.column] = true;
                 }
 
                 // #jogadaespecial en passant
                 if (position.row == 4) {
                     Position esquerda = new Position(position.row, position.column - 1);
-                    if (tab.IsPositionValid(esquerda) && existeInimigo(esquerda) && tab.PiecePosition(esquerda) == partida.EnPassant) {
+                    if (esquerda.IsPositionValid() && existeInimigo(esquerda) && tab.PiecePosition(esquerda) == partida.EnPassant) {
                         mat[esquerda.row + 1, esquerda.column] = true;
                     }
                     Position direita = new Position(position.row, position.column + 1);
-                    if (tab.IsPositionValid(direita) && existeInimigo(direita) && tab.PiecePosition(direita) == partida.EnPassant) {
+                    if (direita.IsPositionValid() && existeInimigo(direita) && tab.PiecePosition(direita) == partida.EnPassant) {
                         mat[direita.row + 1, direita.column] = true;
                     }
                 }

@@ -32,42 +32,42 @@ namespace Xadrez_TIC.Pieces
 
             // acima
             pos.DefineNewValues(position.row - 1, position.column);
-            if (tab.IsPositionValid(pos) && CanMove(pos)) {
+            if (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
             // ne
             pos.DefineNewValues(position.row - 1, position.column + 1);
-            if (tab.IsPositionValid(pos) && CanMove(pos)) {
+            if (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
             // direita
             pos.DefineNewValues(position.row, position.column + 1);
-            if (tab.IsPositionValid(pos) && CanMove(pos)) {
+            if (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
             // se
             pos.DefineNewValues(position.row + 1, position.column + 1);
-            if (tab.IsPositionValid(pos) && CanMove(pos)) {
+            if (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
             // abaixo
             pos.DefineNewValues(position.row + 1, position.column);
-            if (tab.IsPositionValid(pos) && CanMove(pos)) {
+            if (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
             // so
             pos.DefineNewValues(position.row + 1, position.column - 1);
-            if (tab.IsPositionValid(pos) && CanMove(pos)) {
+            if (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
             // esquerda
             pos.DefineNewValues(position.row, position.column - 1);
-            if (tab.IsPositionValid(pos) && CanMove(pos)) {
+            if (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
             // no
             pos.DefineNewValues(position.row - 1, position.column - 1);
-            if (tab.IsPositionValid(pos) && CanMove(pos)) {
+            if (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
 

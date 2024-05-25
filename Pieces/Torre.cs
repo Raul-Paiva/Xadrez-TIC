@@ -23,7 +23,7 @@ namespace Xadrez_TIC.Pieces {
 
             // acima
             pos.DefineNewValues(position.row - 1, position.column);
-            while (tab.IsPositionValid(pos) && podeMover(pos)) {
+            while (pos.IsPositionValid() && podeMover(pos)) {
                 mat[pos.row, pos.column] = true;
                 if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
                     break;
@@ -33,7 +33,7 @@ namespace Xadrez_TIC.Pieces {
 
             // abaixo
             pos.DefineNewValues(position.row + 1, position.column);
-            while (tab.IsPositionValid(pos) && podeMover(pos)) {
+            while (pos.IsPositionValid() && podeMover(pos)) {
                 mat[pos.row, pos.column] = true;
                 if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
                     break;
@@ -43,7 +43,7 @@ namespace Xadrez_TIC.Pieces {
 
             // direita
             pos.DefineNewValues(position.row, position.column + 1);
-            while (tab.IsPositionValid(pos) && podeMover(pos)) {
+            while (pos.IsPositionValid() && podeMover(pos)) {
                 mat[pos.row, pos.column] = true;
                 if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
                     break;
@@ -53,7 +53,7 @@ namespace Xadrez_TIC.Pieces {
 
             // esquerda
             pos.DefineNewValues(position.row, position.column - 1);
-            while (tab.IsPositionValid(pos) && podeMover(pos)) {
+            while (pos.IsPositionValid() && podeMover(pos)) {
                 mat[pos.row, pos.column] = true;
                 if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
                     break;

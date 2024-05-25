@@ -150,13 +150,18 @@ namespace Xadrez_TIC.Chess
             else { throw new FatalException("Erro a descobrir a posição da peca."); }
 
         }
-        public Piece PiecePosition(Position.Chess pos)
+        public Piece? PiecePosition(Position.Chess pos)
         {
-            if (PiecesPos[pos.ToPosition().row, pos.ToPosition().column] == chessPage.PiecePos(pos))
+            try
             {
-                return chessPage.PiecePos(pos.ToChessPosition());
+                if (PiecesPos[pos.ToPosition().row, pos.ToPosition().column] == chessPage.PiecePos(pos))
+                {
+                    return chessPage.PiecePos(pos.ToChessPosition());
+                }
+                else { throw new FatalException("Erro a descobrir a posição da peca."); }
             }
-            else { throw new FatalException("Erro a descobrir a posição da peca."); }
+            catch(ChessException) { return null; }
+            catch (FatalException fe) { throw new FatalException(fe.Message); }
         }
 
 

@@ -17,6 +17,12 @@ namespace Xadrez_TIC.Chess
             this.color = color;
             nMoves = 0;
         }
+        public Piece(Board tab)
+        {
+            position = null;
+            this.tab = tab;
+            nMoves = 0;
+        }
 
         public void AddNMoves()
         {

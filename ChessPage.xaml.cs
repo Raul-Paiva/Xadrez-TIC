@@ -5,6 +5,8 @@ using Color = Xadrez_TIC.Enums.Color;
 using Xadrez_TIC.Pieces;
 using Xadrez_TIC.Chess;
 using Microsoft.Maui.Controls.PlatformConfiguration;
+using System.ComponentModel;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Xadrez_TIC;
 
@@ -13,12 +15,15 @@ public partial class ChessPage : ContentPage
     public static Dictionary<string, ImageButton>? ChessPositions { get; private set; }
     private Board tab;
     private ChessMatch play;
+    ChessViewModel viewModel;
     //public bool[,] PositionInfo { get; private set; }
     //public object[,] PiecesInfo { get; set; } = new object[32, 3]; // na classe Board -> PiecesPos
 
     public ChessPage(ChessViewModel vm)
     {
         InitializeComponent();
+        viewModel = vm;
+        BindingContext = vm;
         ChessPositions = new Dictionary<string, ImageButton>
         {
            { "a1",a1 },{ "b1",b1 },{ "c1",c1 },{ "d1",d1 },{ "e1",e1 },{ "f1",f1 },{ "g1",g1 },{ "h1",h1 },
@@ -29,18 +34,51 @@ public partial class ChessPage : ContentPage
             { "a6",a6 },{ "b6",b6 },{ "c6",c6 },{ "d6",d6 },{ "e6",e6 },{ "f6",f6 },{ "g6",g6 },{ "h6",h6 },
             { "a7",a7 },{ "b7",b7 },{ "c7",c7 },{ "d7",d7 },{ "e7",e7 },{ "f7",f7 },{ "g7",g7 },{ "h7",h7 },
             { "a8",a8 },{ "b8",b8 },{ "c8",c8 },{ "d8",d8 },{ "e8",e8 },{ "f8",f8 },{ "g8",g8 },{ "h8",h8 },
-        };
-        BindingContext = vm;
+        };       
         tab = new Board(this);
         play = new ChessMatch(tab);
-        Match(vm);
     }
 
-    private void Match(ChessViewModel vm)
+    void PressedOn(object sender, EventArgs e)
     {
-        BindingContext = vm;
-
+        ImageButton positionpiece = (ImageButton)sender;//------------------------------------Hello World saves world again!!!!---------------------
+        if (positionpiece.IsPressed) { throw new ChessException("Hello World!"); }
     }
+
+    /*private void Match(ChessViewModel vm)
+    {
+        //BindingContext = vm;
+        while (!play.finished)
+        {
+        FirstChoiceLoop:
+            Piece? clickedPiece1 = ClickedPiece(vm);
+            if (clickedPiece1 is Free) { goto FirstChoiceLoop; }
+            else if (clickedPiece1.color == play.Player)
+            {
+                    Piece? clickedPiece2 = ClickedPiece(vm);
+                    if (clickedPiece2 is Free) { play.MovePiece(clickedPiece1.position,clickedPiece2.position); }//vou ter de alterar para captar pecas apenas em lugares marcados(ponto.png)
+                    else if (clickedPiece2.color == play.Player)
+                    {
+                        throw new ChessException("Não podes captar a tua prórpia peça!");
+                    }
+                    else if (clickedPiece2.color != play.Player)
+                    {
+                    throw new FatalException("Não programei ainda.");
+                    }
+            }
+            else if (clickedPiece1.color != play.Player)
+            {
+                throw new ChessException("Não podes mover a peça do teu adversário!");
+            }
+        }
+    }*/
+
+    /*private Piece ClickedPiece(ChessViewModel vm)
+    {
+        Position pos = new Position.Chess(vm.PressActions()).ToPosition();
+        return tab.PiecePosition(pos);
+
+    }*/
 
     public void Add(Position.Chess p, string source)
     {
@@ -80,12 +118,13 @@ public partial class ChessPage : ContentPage
         Dictionary<string, Piece>? pieces = new Dictionary<string, Piece> {//pode ter um error porque cria uma replica da peca no tabuleiro
             { "bispo", new Bispo(tab,color) }, { "cavalo", new Cavalo(tab, color) },
             { "torre", new Torre(tab, color) }, { "peao", new Peao(tab, color, play) },
-            { "rei", new Rei(tab, color, play) }, { "dama", new Dama(tab, color) },
+            { "rei", new Rei(tab, color, play) }, { "dama", new Dama(tab, color) }, {"free",new Free(tab) },
         };
 
         pieces[info[0]].position = p.ToPosition();
         return pieces[info[0]];
     }
+
 
     public void MoveOptions(params Position.Chess[] positions)
     {

@@ -63,7 +63,7 @@
                 
                 <!-- Posições Verdes -->
                 <Border Grid.Row="0" Grid.Column="1" BackgroundColor="Green">
-                    <ImageButton x:Name="b8" Source="livre.png" IsPressed="{Binding PressedOn_b8, Mode=OneWayToSource}" Style="{StaticResource ImageButtonStyle}"/>
+                    <ImageButton x:Name="b8" Source="livre.png" Pressed="PressedOn" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="3" BackgroundColor="Green">
                     <ImageButton x:Name="d8" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
@@ -87,7 +87,7 @@
                     <ImageButton x:Name="g7" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="1" BackgroundColor="Green">
-                    <ImageButton x:Name="b6" Source="livre.png" IsPressed="{Binding PressedOn_b6, Mode=OneWayToSource}" Style="{StaticResource ImageButtonStyle}"/>
+                    <ImageButton x:Name="b6" Source="livre.png" Pressed="PressedOn" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="3" BackgroundColor="Green">
                     <ImageButton x:Name="d6" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
@@ -111,7 +111,7 @@
                     <ImageButton x:Name="g5" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="4" Grid.Column="1" BackgroundColor="Green">
-                    <ImageButton x:Name="b4" Source="livre.png" IsPressed="{Binding PressedOn_b4, Mode=OneWayToSource}" Style="{StaticResource ImageButtonStyle}"/>
+                    <ImageButton x:Name="b4" Source="livre.png" Pressed="PressedOn" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="4" Grid.Column="3" BackgroundColor="Green">
                     <ImageButton x:Name="d4" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
@@ -135,7 +135,7 @@
                     <ImageButton x:Name="g3" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="6" Grid.Column="1" BackgroundColor="Green">
-                    <ImageButton x:Name="b2" Source="livre.png" IsPressed="{Binding PressedOn_b2, Mode=OneWayToSource}" Style="{StaticResource ImageButtonStyle}"/>
+                    <ImageButton x:Name="b2" Source="livre.png" Pressed="PressedOn" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="6" Grid.Column="3" BackgroundColor="Green">
                     <ImageButton x:Name="d2" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
@@ -173,7 +173,7 @@
                     <ImageButton x:Name="g8" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="1" BackgroundColor="White">
-                    <ImageButton x:Name="b7" Source="livre.png" IsPressed="{Binding PressedOn_b7, Mode=OneWayToSource}" Style="{StaticResource ImageButtonStyle}"/>
+                    <ImageButton x:Name="b7" Source="livre.png" Pressed="PressedOn" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="3" BackgroundColor="White">
                     <ImageButton x:Name="d7" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
@@ -197,7 +197,7 @@
                     <ImageButton x:Name="g6" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="1" BackgroundColor="White">
-                    <ImageButton x:Name="b5" Source="livre.png" IsPressed="{Binding PressedOn_b5, Mode=OneWayToSource}" Style="{StaticResource ImageButtonStyle}"/>
+                    <ImageButton x:Name="b5" Source="livre.png" Pressed="PressedOn" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="3" BackgroundColor="White">
                     <ImageButton x:Name="d5" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
@@ -221,7 +221,7 @@
                     <ImageButton x:Name="g4" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="5" Grid.Column="1" BackgroundColor="White">
-                    <ImageButton x:Name="b3" Source="livre.png" IsPressed="{Binding PressedOn_b3, Mode=OneWayToSource}" Style="{StaticResource ImageButtonStyle}"/>
+                    <ImageButton x:Name="b3" Source="livre.png" Pressed="PressedOn" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="5" Grid.Column="3" BackgroundColor="White">
                     <ImageButton x:Name="d3" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
@@ -245,7 +245,7 @@
                     <ImageButton x:Name="g2" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="7" Grid.Column="1" BackgroundColor="White">
-                    <ImageButton x:Name="b1" Source="livre.png" IsPressed="{Binding PressedOn_b1, Mode=OneWayToSource}" Style="{StaticResource ImageButtonStyle}"/>
+                    <ImageButton x:Name="b1" Source="livre.png" Pressed="PressedOn" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="7" Grid.Column="3" BackgroundColor="White">
                     <ImageButton x:Name="d1" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
