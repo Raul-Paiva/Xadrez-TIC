@@ -1,4 +1,5 @@
 ﻿using Color = Xadrez_TIC.Enums.Color;
+using Xadrez_TIC.Exceptions;
 
 namespace Xadrez_TIC.Chess
 {
@@ -42,6 +43,22 @@ namespace Xadrez_TIC.Chess
 
         }
 
+        public virtual Chess ToChessPosition()
+        {
+            char c;
+            if(column == 0) { c = 'a'; }//--------------------------------------------------------Possivel erro(nao sei se comeca no 0 ou no 1)-------------------------------------
+            else if (column == 1) { c = 'b'; }
+            else if (column == 2) { c = 'c'; }
+            else if (column == 3) { c = 'd'; }
+            else if (column == 4) { c = 'e'; }
+            else if (column == 5) { c = 'f'; }
+            else if (column == 6) { c = 'g'; }
+            else if (column == 7) { c = 'h'; }
+            else { throw new FatalException("Erro na conversão de integers para caracteres."); }
+
+            return new Chess(row,c);
+        }
+
         //Retorna a coluna e a linha da peca ou a posicao do tipo "a2"
         public override string ToString()
         {
@@ -66,11 +83,23 @@ namespace Xadrez_TIC.Chess
                 chessColumn = column;
             }
 
+
             //Entra com a posicao do tipo "a2" e sai com uma posicao do tipo posicao
             public Position ToPosition()
             {
-                return new Position(8 - chessRow, chessColumn - 'a');
+                return new Position(9 - chessRow, chessColumn - 'a');
             }
+
+            /// <summary>
+            /// Vai dar erro, não use a conversão ToChessPosition na SubClasse Chess 
+            /// </summary>
+            /// <returns></returns>
+            /// <exception cref="FatalException"></exception>
+            public override sealed Chess ToChessPosition()
+            {
+                throw new FatalException("Não use a conversão ToChessPosition na SubClasse Chess");
+            }
+
 
             //Retorna a posicao do tipo "a2"
             public override string ToString()

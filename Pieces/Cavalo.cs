@@ -1,7 +1,8 @@
 ﻿using Xadrez_TIC.Chess;
 using Color = Xadrez_TIC.Enums.Color;
 
-namespace xadrez {
+namespace Xadrez_TIC.Pieces
+{
 
     class Cavalo : Piece {
 
@@ -9,7 +10,7 @@ namespace xadrez {
         }
 
         public override string ToString() {
-            return "C";
+            return "cavalo";
         }
 
         private bool CanMove(Position pos) {
@@ -18,39 +19,39 @@ namespace xadrez {
         }
 
         public override bool[,] PossibleMoves() {
-            bool[,] mat = new bool[tab.linhas, tab.colunas];
+            bool[,] mat = new bool[tab.rows, tab.columns];
 
             Position pos = new Position(0, 0);
 
-            pos.DefineNewValues(posicao.row - 1, posicao.column - 2);
+            pos.DefineNewValues(position.row - 1, position.column - 2);
             if (tab.IsPositionValid(pos) && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
-            pos.DefineNewValues(posicao.row - 2, posicao.column - 1);
+            pos.DefineNewValues(position.row - 2, position.column - 1);
             if (tab.IsPositionValid(pos) && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
-            pos.DefineNewValues(posicao.row - 2, posicao.column + 1);
+            pos.DefineNewValues(position.row - 2, position.column + 1);
             if (tab.IsPositionValid(pos) && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
-            pos.DefineNewValues(posicao.row - 1, posicao.column + 2);
+            pos.DefineNewValues(position.row - 1, position.column + 2);
             if (tab.IsPositionValid(pos) && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
-            pos.DefineNewValues(posicao.row + 1, posicao.column + 2);
+            pos.DefineNewValues(position.row + 1, position.column + 2);
             if (tab.IsPositionValid(pos) && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
-            pos.DefineNewValues(posicao.row + 2, posicao.column + 1);
+            pos.DefineNewValues(position.row + 2, position.column + 1);
             if (tab.IsPositionValid(pos) && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
-            pos.DefineNewValues(posicao.row + 2, posicao.column - 1);
+            pos.DefineNewValues(position.row + 2, position.column - 1);
             if (tab.IsPositionValid(pos) && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
-            pos.DefineNewValues(posicao.row + 1, posicao.column - 2);
+            pos.DefineNewValues(position.row + 1, position.column - 2);
             if (tab.IsPositionValid(pos) && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }

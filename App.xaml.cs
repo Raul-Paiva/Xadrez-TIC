@@ -6,8 +6,8 @@
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage(new ViewModels.MainViewModel()));
-            //MainPage = new AppShell(); this is the original 
+            //MainPage = new NavigationPage(new MainPage(new ViewModels.MainViewModel()));
+            MainPage = new AppShell();//this is the original
         }
     }
 }

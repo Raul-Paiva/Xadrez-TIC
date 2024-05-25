@@ -1,7 +1,7 @@
 ﻿using Xadrez_TIC.Chess;
 using Color = Xadrez_TIC.Enums.Color;
 
-namespace xadrez {
+namespace Xadrez_TIC.Pieces {
 
     class Peao : Piece {
 
@@ -12,7 +12,7 @@ namespace xadrez {
         }
 
         public override string ToString() {
-            return "P";
+            return "peao";
         }
 
         private bool existeInimigo(Position pos) {
@@ -25,68 +25,68 @@ namespace xadrez {
         }
 
         public override bool[,] PossibleMoves() {
-            bool[,] mat = new bool[tab.linhas, tab.colunas];
+            bool[,] mat = new bool[tab.rows, tab.columns];
 
             Position pos = new Position(0, 0);
 
             if (color == Color.White) {
-                pos.DefineNewValues(posicao.row - 1, posicao.column);
+                pos.DefineNewValues(position.row - 1, position.column);
                 if (tab.IsPositionValid (pos) && free(pos)) {
                     mat[pos.row, pos.column] = true;
                 }
-                pos.DefineNewValues(posicao.row - 2, posicao.column);
-                Position p2 = new Position(posicao.row - 1, posicao.column);
+                pos.DefineNewValues(position.row - 2, position.column);
+                Position p2 = new Position(position.row - 1, position.column);
                 if (tab.IsPositionValid(p2) && free(p2) && tab.IsPositionValid(pos) && free(pos) && nMoves == 0) {
                     mat[pos.row, pos.column] = true;
                 }
-                pos.DefineNewValues(posicao.row - 1, posicao.column - 1);
+                pos.DefineNewValues(position.row - 1, position.column - 1);
                 if (tab.IsPositionValid(pos) && existeInimigo(pos)) {
                     mat[pos.row, pos.column] = true;
                 }
-                pos.DefineNewValues(posicao.row - 1, posicao.column + 1);
+                pos.DefineNewValues(position.row - 1, position.column + 1);
                 if (tab.IsPositionValid(pos) && existeInimigo(pos)) {
                     mat[pos.row, pos.column] = true;
                 }
 
                 // #jogadaespecial en passant
-                if (posicao.row == 3) {
-                    Position esquerda = new Position(posicao.row, posicao.column - 1);
-                    if (tab.IsPositionValid(esquerda) && existeInimigo(esquerda) && tab.PiecePosition(esquerda) == partida.vulneravelEnPassant) {
+                if (position.row == 3) {
+                    Position esquerda = new Position(position.row, position.column - 1);
+                    if (tab.IsPositionValid(esquerda) && existeInimigo(esquerda) && tab.PiecePosition(esquerda) == partida.EnPassant) {
                         mat[esquerda.row - 1, esquerda.column] = true;
                     }
-                    Position direita = new Position(posicao.row, posicao.column + 1);
-                    if (tab.IsPositionValid(direita) && existeInimigo(direita) && tab.PiecePosition(direita) == partida.vulneravelEnPassant) {
+                    Position direita = new Position(position.row, position.column + 1);
+                    if (tab.IsPositionValid(direita) && existeInimigo(direita) && tab.PiecePosition(direita) == partida.EnPassant) {
                         mat[direita.row - 1, direita.column] = true;
                     }
                 }
             }
             else {
-                pos.DefineNewValues(posicao.row + 1, posicao.column);
+                pos.DefineNewValues(position.row + 1, position.column);
                 if (tab.IsPositionValid(pos) && free(pos)) {
                     mat[pos.row, pos.column] = true;
                 }
-                pos.DefineNewValues(posicao.row + 2, posicao.column);
-                Position p2 = new Position(posicao.row + 1, posicao.column);
+                pos.DefineNewValues(position.row + 2, position.column);
+                Position p2 = new Position(position.row + 1, position.column);
                 if (tab.IsPositionValid(p2) && free(p2) && tab.IsPositionValid(pos) && free(pos) && nMoves == 0) {
                     mat[pos.row, pos.column] = true;
                 }
-                pos.DefineNewValues(posicao.row + 1, posicao.column - 1);
+                pos.DefineNewValues(position.row + 1, position.column - 1);
                 if (tab.IsPositionValid(pos) && existeInimigo(pos)) {
                     mat[pos.row, pos.column] = true;
                 }
-                pos.DefineNewValues(posicao.row + 1, posicao.column + 1);
+                pos.DefineNewValues(position.row + 1, position.column + 1);
                 if (tab.IsPositionValid(pos) && existeInimigo(pos)) {
                     mat[pos.row, pos.column] = true;
                 }
 
                 // #jogadaespecial en passant
-                if (posicao.row == 4) {
-                    Position esquerda = new Position(posicao.row, posicao.column - 1);
-                    if (tab.IsPositionValid(esquerda) && existeInimigo(esquerda) && tab.PiecePosition(esquerda) == partida.vulneravelEnPassant) {
+                if (position.row == 4) {
+                    Position esquerda = new Position(position.row, position.column - 1);
+                    if (tab.IsPositionValid(esquerda) && existeInimigo(esquerda) && tab.PiecePosition(esquerda) == partida.EnPassant) {
                         mat[esquerda.row + 1, esquerda.column] = true;
                     }
-                    Position direita = new Position(posicao.row, posicao.column + 1);
-                    if (tab.IsPositionValid(direita) && existeInimigo(direita) && tab.PiecePosition(direita) == partida.vulneravelEnPassant) {
+                    Position direita = new Position(position.row, position.column + 1);
+                    if (tab.IsPositionValid(direita) && existeInimigo(direita) && tab.PiecePosition(direita) == partida.EnPassant) {
                         mat[direita.row + 1, direita.column] = true;
                     }
                 }

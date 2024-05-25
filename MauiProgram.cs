@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Logging;
 using Xadrez_TIC.ViewModels;
 using Xadrez_TIC.Chess;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Maui;
 
 namespace Xadrez_TIC
 {
@@ -10,20 +12,18 @@ namespace Xadrez_TIC
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
-            builder
-                .UseMauiApp<App>()
+            builder.UseMauiApp<App>()
+                .UseMauiCommunityToolkitCore()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<MainViewModel>();
-
             builder.Services.AddTransient<ChessPage>();
             builder.Services.AddTransient<ChessViewModel>();
-           
 #if WINDOWS
             builder.ConfigureLifecycleEvents(events =>
             {
@@ -49,7 +49,6 @@ namespace Xadrez_TIC
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-
             return builder.Build();
         }
     }

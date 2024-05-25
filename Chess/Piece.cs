@@ -2,9 +2,9 @@
 
 namespace Xadrez_TIC.Chess
 {
-    abstract class Piece
+    public abstract class Piece
     {
-        public Position? posicao { get; set; }
+        public Position? position { get; set; }
         public Enums.Color color { get; protected set; }
         public int nMoves { get; protected set; }
         public Board tab { get; protected set; }
@@ -12,7 +12,7 @@ namespace Xadrez_TIC.Chess
 
         public Piece(Board tab, Color color)
         {
-            posicao = null;
+            position = null;
             this.tab = tab;
             this.color = color;
             nMoves = 0;
@@ -31,9 +31,9 @@ namespace Xadrez_TIC.Chess
         public bool ExistPossibleMoves()
         {
             bool[,] mat = PossibleMoves();
-            for (int i = 0; i < tab.linhas; i++)
+            for (int i = 0; i < tab.rows; i++)
             {
-                for (int j = 0; j < tab.colunas; j++)
+                for (int j = 0; j < tab.columns; j++)
                 {
                     if (mat[i, j])
                     {
@@ -50,5 +50,10 @@ namespace Xadrez_TIC.Chess
         //}
 
         public abstract bool[,] PossibleMoves();
+
+        public void Captured()
+        {
+            position = null;
+        }
     }
 }

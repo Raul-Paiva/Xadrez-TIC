@@ -1,7 +1,7 @@
 ﻿using Xadrez_TIC.Chess;
 using Color = Xadrez_TIC.Enums.Color;
 
-namespace xadrez {
+namespace Xadrez_TIC.Pieces {
 
     class Bispo : Piece {
 
@@ -9,7 +9,7 @@ namespace xadrez {
         }
 
         public override string ToString() {
-            return "B";
+            return "bispo";
         }
 
         private bool CanMove(Position pos) {
@@ -18,12 +18,12 @@ namespace xadrez {
         }
         
         public override bool[,] PossibleMoves() {
-            bool[,] mat = new bool[tab.linhas, tab.colunas];
+            bool[,] mat = new bool[tab.rows, tab.columns];
 
             Position pos = new Position(0, 0);
 
             // NO
-            pos.DefineNewValues(posicao.row - 1, posicao.column - 1);
+            pos.DefineNewValues(position.row - 1, position.column - 1);
             while (tab.IsPositionValid(pos) && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
                 if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
@@ -33,7 +33,7 @@ namespace xadrez {
             }
 
             // NE
-            pos.DefineNewValues(posicao.row - 1, posicao.column + 1);
+            pos.DefineNewValues(position.row - 1, position.column + 1);
             while (tab.IsPositionValid(pos) && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
                 if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
@@ -43,7 +43,7 @@ namespace xadrez {
             }
 
             // SE
-            pos.DefineNewValues(posicao.row + 1, posicao.column + 1);
+            pos.DefineNewValues(position.row + 1, position.column + 1);
             while (tab.IsPositionValid(pos) && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
                 if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
@@ -53,7 +53,7 @@ namespace xadrez {
             }
 
             // SO
-            pos.DefineNewValues(posicao.row + 1, posicao.column - 1);
+            pos.DefineNewValues(position.row + 1, position.column - 1);
             while (tab.IsPositionValid(pos) && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
                 if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {

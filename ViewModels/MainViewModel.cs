@@ -10,8 +10,8 @@ namespace Xadrez_TIC.ViewModels
         [RelayCommand]
         async Task Play(object obj)
         {
-            //await Shell.Current.GoToAsync(nameof(ChessPage));
-            await Application.Current.MainPage.Navigation.PushAsync(new ChessPage(new ChessViewModel()));
+            await Shell.Current.GoToAsync(nameof(ChessPage));
+            //await Application.Current.MainPage.Navigation.PushAsync(new ChessPage(new ChessViewModel()));
         }
     }
 }

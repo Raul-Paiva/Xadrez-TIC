@@ -1,6 +1,4 @@
-﻿using Xadrez_TIC.Exceptions;
-
-namespace Xadrez_TIC.Enums
+﻿namespace Xadrez_TIC.Enums
 {
     //Lista das pecas
     public enum PiecesNames
