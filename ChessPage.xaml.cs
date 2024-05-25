@@ -32,8 +32,14 @@ public partial class ChessPage : ContentPage
         };
         BindingContext = vm;
         tab = new Board(this);
-
         play = new ChessMatch(tab);
+        Match(vm);
+    }
+
+    private void Match(ChessViewModel vm)
+    {
+        BindingContext = vm;
+
     }
 
     public void Add(Position.Chess p, string source)

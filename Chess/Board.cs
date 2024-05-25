@@ -170,15 +170,9 @@ namespace Xadrez_TIC.Chess
             return true;// testar se a peça existe (se é diferente de livre.png) ------------------------------------------------------------------------------------------\\
         }
 
-        public bool IsPositionValid(Position pos)
-        {
-            if (pos.row < 0 || pos.row >= rows || pos.column < 0 || pos.column >= columns) { return false; }
-            else { return true; }
-        }
-
         public void CheckPosition(Position pos)
         {
-            if (!IsPositionValid(pos))
+            if (!pos.IsPositionValid())
             {
                 throw new ChessException();//------------------------------------------------------------------------------------------------------------------------------\\
             }

@@ -8,6 +8,17 @@
              Shell.NavBarIsVisible="False"
              BackgroundColor="#373737">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="ImageButton" x:Key="ImageButtonStyle">
+                <Setter Property="IsEnabled" Value="True"/>
+                <Setter Property="IsVisible" Value="True"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Aspect" Value="AspectFit"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -49,201 +60,201 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-
+                
                 <!-- Posições Verdes -->
                 <Border Grid.Row="0" Grid.Column="1" BackgroundColor="Green">
-                    <ImageButton x:Name="b8" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="b8" Source="livre.png" IsPressed="{Binding PressedOn_b8, Mode=OneWayToSource}" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="3" BackgroundColor="Green">
-                    <ImageButton x:Name="d8" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="d8" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="5" BackgroundColor="Green">
-                    <ImageButton x:Name="f8" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="f8" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="7" BackgroundColor="Green">
-                    <ImageButton x:Name="h8" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="h8" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="0" BackgroundColor="Green">
-                    <ImageButton x:Name="a7" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="a7" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="2" BackgroundColor="Green">
-                    <ImageButton x:Name="c7" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="c7" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="4" BackgroundColor="Green">
-                    <ImageButton x:Name="e7" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="e7" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="6" BackgroundColor="Green">
-                    <ImageButton x:Name="g7" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="g7" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="1" BackgroundColor="Green">
-                    <ImageButton x:Name="b6" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="b6" Source="livre.png" IsPressed="{Binding PressedOn_b6, Mode=OneWayToSource}" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="3" BackgroundColor="Green">
-                    <ImageButton x:Name="d6" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="d6" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="5" BackgroundColor="Green">
-                    <ImageButton x:Name="f6" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="f6" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="7" BackgroundColor="Green">
-                    <ImageButton x:Name="h6" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="h6" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="0" BackgroundColor="Green">
-                    <ImageButton x:Name="a5" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="a5" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="2" BackgroundColor="Green">
-                    <ImageButton x:Name="c5" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="c5" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="4" BackgroundColor="Green">
-                    <ImageButton x:Name="e5" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="e5" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="6" BackgroundColor="Green">
-                    <ImageButton x:Name="g5" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="g5" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="4" Grid.Column="1" BackgroundColor="Green">
-                    <ImageButton x:Name="b4" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="b4" Source="livre.png" IsPressed="{Binding PressedOn_b4, Mode=OneWayToSource}" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="4" Grid.Column="3" BackgroundColor="Green">
-                    <ImageButton x:Name="d4" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="d4" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="4" Grid.Column="5" BackgroundColor="Green">
-                    <ImageButton x:Name="f4" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="f4" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="4" Grid.Column="7" BackgroundColor="Green">
-                    <ImageButton x:Name="h4" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="h4" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="5" Grid.Column="0" BackgroundColor="Green">
-                    <ImageButton x:Name="a3" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="a3" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="5" Grid.Column="2" BackgroundColor="Green">
-                    <ImageButton x:Name="c3" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="c3" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="5" Grid.Column="4" BackgroundColor="Green">
-                    <ImageButton x:Name="e3" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="e3" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="5" Grid.Column="6" BackgroundColor="Green">
-                    <ImageButton x:Name="g3" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="g3" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="6" Grid.Column="1" BackgroundColor="Green">
-                    <ImageButton x:Name="b2" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="b2" Source="livre.png" IsPressed="{Binding PressedOn_b2, Mode=OneWayToSource}" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="6" Grid.Column="3" BackgroundColor="Green">
-                    <ImageButton x:Name="d2" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="d2" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="6" Grid.Column="5" BackgroundColor="Green">
-                    <ImageButton x:Name="f2" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="f2" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="6" Grid.Column="7" BackgroundColor="Green">
-                    <ImageButton x:Name="h2" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="h2" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="7" Grid.Column="0" BackgroundColor="Green">
-                    <ImageButton x:Name="a1" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="a1" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="7" Grid.Column="2" BackgroundColor="Green">
-                    <ImageButton x:Name="c1" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="c1" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="7" Grid.Column="4" BackgroundColor="Green">
-                    <ImageButton x:Name="e1" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="e1" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="7" Grid.Column="6" BackgroundColor="Green">
-                    <ImageButton x:Name="g1" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="g1" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
 
                 <!-- Posições Brancas -->
                 <Border Grid.Row="0" Grid.Column="0" BackgroundColor="White">
-                    <ImageButton x:Name="a8" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="a8" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="2" BackgroundColor="White">
-                    <ImageButton x:Name="c8" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="c8" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="4" BackgroundColor="White">
-                    <ImageButton x:Name="e8" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="e8" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="6" BackgroundColor="White">
-                    <ImageButton x:Name="g8" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="g8" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="1" BackgroundColor="White">
-                    <ImageButton x:Name="b7" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="b7" Source="livre.png" IsPressed="{Binding PressedOn_b7, Mode=OneWayToSource}" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="3" BackgroundColor="White">
-                    <ImageButton x:Name="d7" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="d7" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="5" BackgroundColor="White">
-                    <ImageButton x:Name="f7" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="f7" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="7" BackgroundColor="White">
-                    <ImageButton x:Name="h7" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="h7" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="0" BackgroundColor="White">
-                    <ImageButton x:Name="a6" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="a6" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="2" BackgroundColor="White">
-                    <ImageButton x:Name="c6" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="c6" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="4" BackgroundColor="White">
-                    <ImageButton x:Name="e6" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="e6" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="6" BackgroundColor="White">
-                    <ImageButton x:Name="g6" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="g6" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="1" BackgroundColor="White">
-                    <ImageButton x:Name="b5" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="b5" Source="livre.png" IsPressed="{Binding PressedOn_b5, Mode=OneWayToSource}" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="3" BackgroundColor="White">
-                    <ImageButton x:Name="d5" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="d5" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="5" BackgroundColor="White">
-                    <ImageButton x:Name="f5" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="f5" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="7" BackgroundColor="White">
-                    <ImageButton x:Name="h5" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="h5" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="4" Grid.Column="0" BackgroundColor="White">
-                    <ImageButton x:Name="a4" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="a4" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="4" Grid.Column="2" BackgroundColor="White">
-                    <ImageButton x:Name="c4" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="c4" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="4" Grid.Column="4" BackgroundColor="White">
-                    <ImageButton x:Name="e4" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="e4" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="4" Grid.Column="6" BackgroundColor="White">
-                    <ImageButton x:Name="g4" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="g4" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="5" Grid.Column="1" BackgroundColor="White">
-                    <ImageButton x:Name="b3" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="b3" Source="livre.png" IsPressed="{Binding PressedOn_b3, Mode=OneWayToSource}" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="5" Grid.Column="3" BackgroundColor="White">
-                    <ImageButton x:Name="d3" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="d3" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="5" Grid.Column="5" BackgroundColor="White">
-                    <ImageButton x:Name="f3" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="f3" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="5" Grid.Column="7" BackgroundColor="White">
-                    <ImageButton x:Name="h3" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="h3" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="6" Grid.Column="0" BackgroundColor="White">
-                    <ImageButton x:Name="a2" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="a2" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="6" Grid.Column="2" BackgroundColor="White">
-                    <ImageButton x:Name="c2" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="c2" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="6" Grid.Column="4" BackgroundColor="White">
-                    <ImageButton x:Name="e2" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="e2" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="6" Grid.Column="6" BackgroundColor="White">
-                    <ImageButton x:Name="g2" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="g2" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="7" Grid.Column="1" BackgroundColor="White">
-                    <ImageButton x:Name="b1" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="b1" Source="livre.png" IsPressed="{Binding PressedOn_b1, Mode=OneWayToSource}" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="7" Grid.Column="3" BackgroundColor="White">
-                    <ImageButton x:Name="d1" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="d1" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="7" Grid.Column="5" BackgroundColor="White">
-                    <ImageButton x:Name="f1" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="f1" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
                 <Border Grid.Row="7" Grid.Column="7" BackgroundColor="White">
-                    <ImageButton x:Name="h1" Source="livre.png" IsEnabled="True" IsVisible="True" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+                    <ImageButton x:Name="h1" Source="livre.png" Style="{StaticResource ImageButtonStyle}"/>
                 </Border>
             </Grid>
         </StackLayout>

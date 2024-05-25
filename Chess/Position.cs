@@ -15,6 +15,7 @@ namespace Xadrez_TIC.Chess
             this.row = row;
             this.column = column;
         }
+        private Position() { }
 
         //Construtor para ser usado na subclasse Chess
         private Position(int row, char column) { }
@@ -31,8 +32,8 @@ namespace Xadrez_TIC.Chess
             int collumIndex = position[0] - 'a' + 1;
             int rowIndex = int.Parse(position[1].ToString());
             // False - White; True - Black \\
-            if ((collumIndex + rowIndex) % 2 == 0){return Enums.Color.Black;}
-            else{return Enums.Color.White;}
+            if ((collumIndex + rowIndex) % 2 == 0) { return Enums.Color.Black; }
+            else { return Enums.Color.White; }
         }
 
         //Define novos valores para a posicao
@@ -46,7 +47,7 @@ namespace Xadrez_TIC.Chess
         public virtual Chess ToChessPosition()
         {
             char c;
-            if(column == 0) { c = 'a'; }//--------------------------------------------------------Possivel erro(nao sei se comeca no 0 ou no 1)-------------------------------------
+            if (column == 0) { c = 'a'; }//--------------------------------------------------------Possivel erro(nao sei se comeca no 0 ou no 1)-------------------------------------
             else if (column == 1) { c = 'b'; }
             else if (column == 2) { c = 'c'; }
             else if (column == 3) { c = 'd'; }
@@ -56,7 +57,7 @@ namespace Xadrez_TIC.Chess
             else if (column == 7) { c = 'h'; }
             else { throw new FatalException("Erro na conversão de integers para caracteres."); }
 
-            return new Chess(row,c);
+            return new Chess(9 - row, c);
         }
 
         //Retorna a coluna e a linha da peca ou a posicao do tipo "a2"
@@ -67,7 +68,12 @@ namespace Xadrez_TIC.Chess
             + column;
         }
 
-
+        public virtual bool IsPositionValid()
+        {
+            //Position
+            if (row < 0 || row >= 8 || column < 0 || column >= 8) { return false; }
+            else { return true; }
+        }
 
 
         public class Chess : Position
@@ -82,12 +88,29 @@ namespace Xadrez_TIC.Chess
                 chessRow = row;
                 chessColumn = column;
             }
+            public Chess(string fullPosition)
+            {                
+                int number;
+                fullPosition = fullPosition.Trim().ToLower();                
+                char character = fullPosition[0];
+                try { number = int.Parse(fullPosition[1].ToString()); } catch (Exception e) { throw new Exception("A posição é inválida!"); }
+                chessColumn = character;
+                chessRow = number;
+            }
 
 
             //Entra com a posicao do tipo "a2" e sai com uma posicao do tipo posicao
             public Position ToPosition()
             {
                 return new Position(9 - chessRow, chessColumn - 'a');
+            }
+
+            public override sealed bool IsPositionValid()
+            {
+                //Position.Chess
+                Position pos = this.ToPosition();
+                if (pos.row < 0 || pos.row >= 8 || pos.column < 0 || pos.column >= 8) { return false; }
+                else { return true; }
             }
 
             /// <summary>
