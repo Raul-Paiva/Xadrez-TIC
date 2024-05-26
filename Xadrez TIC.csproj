@@ -24,10 +24,10 @@
 		<SatelliteResourceLanguages>pt</SatelliteResourceLanguages>
 		
 		<!-- Display name -->
-		<ApplicationTitle>Xadrez TIC</ApplicationTitle>
+		<ApplicationTitle>Xadrez_TIC</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.xadreztic</ApplicationId>
+		<ApplicationId>com.tic.xadrez</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>

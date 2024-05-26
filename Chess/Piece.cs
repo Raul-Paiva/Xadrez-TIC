@@ -8,6 +8,7 @@ namespace Xadrez_TIC.Chess
         public Enums.Color color { get; protected set; }
         public int nMoves { get; protected set; }
         public Board tab { get; protected set; }
+        public bool IsCaptured { get; private set; }
 
 
         public Piece(Board tab, Color color)
@@ -59,7 +60,11 @@ namespace Xadrez_TIC.Chess
 
         public void Captured()
         {
-            position = null;
+            IsCaptured = true;
+        }
+        public void UndoCapture()
+        {
+            IsCaptured = false;
         }
     }
 }

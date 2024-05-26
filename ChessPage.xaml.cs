@@ -4,26 +4,35 @@ using Xadrez_TIC.Exceptions;
 using Color = Xadrez_TIC.Enums.Color;
 using Xadrez_TIC.Pieces;
 using Xadrez_TIC.Chess;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using System.ComponentModel;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Xadrez_TIC;
 
 public partial class ChessPage : ContentPage
 {
-    public static Dictionary<string, ImageButton>? ChessPositions { get; private set; }
+    //---------- Deal with received data ----------\\
+    private bool isItTheFirstClick = true;
+    private Piece firstPieceClicked;
+    //----------------------------------------------\\
+
+    //---------- Main Game Properties ----------\\
     private Board tab;
     private ChessMatch play;
-    ChessViewModel viewModel;
-    //public bool[,] PositionInfo { get; private set; }
-    //public object[,] PiecesInfo { get; set; } = new object[32, 3]; // na classe Board -> PiecesPos
+    public readonly ChessViewModel viewModel;
+    //-------------------------------------------\\
+
+    //---------- Chess Positions Listed ----------\\
+    public static Dictionary<string, ImageButton>? ChessPositions { get; private set; }
+    //---------------------------------------------\\
+
 
     public ChessPage(ChessViewModel vm)
     {
-        InitializeComponent();
-        viewModel = vm;
+        //---------- Initializing and Binding Components ----------\\
+        InitializeComponent();        
         BindingContext = vm;
+        //----------------------------------------------------------\\
+
+        //---------- Chess Positions Listed ----------\\
         ChessPositions = new Dictionary<string, ImageButton>
         {
            { "a1",a1 },{ "b1",b1 },{ "c1",c1 },{ "d1",d1 },{ "e1",e1 },{ "f1",f1 },{ "g1",g1 },{ "h1",h1 },
@@ -34,59 +43,76 @@ public partial class ChessPage : ContentPage
             { "a6",a6 },{ "b6",b6 },{ "c6",c6 },{ "d6",d6 },{ "e6",e6 },{ "f6",f6 },{ "g6",g6 },{ "h6",h6 },
             { "a7",a7 },{ "b7",b7 },{ "c7",c7 },{ "d7",d7 },{ "e7",e7 },{ "f7",f7 },{ "g7",g7 },{ "h7",h7 },
             { "a8",a8 },{ "b8",b8 },{ "c8",c8 },{ "d8",d8 },{ "e8",e8 },{ "f8",f8 },{ "g8",g8 },{ "h8",h8 },
-        };       
+        };
+        //---------------------------------------------\\
+
+        //---------- Main Game Properties ----------\\
+        viewModel = vm;
         tab = new Board(this);
         play = new ChessMatch(tab);
+        //-------------------------------------------\\
     }
 
+    //---------- Prepares the Source provided by xaml to be accepted by the code ----------\\
+    private string SourceFileName(ImageButton piece)
+    {
+        string[] p = piece.Source.ToString().Split(' ');
+
+        return p[1];
+    }
+
+    //---------- Reacts when a ImageButton is clicked and initializes game logic ----------\\
     void PressedOn(object sender, EventArgs e)
     {
-        ImageButton positionpiece = (ImageButton)sender;//------------------------------------Hello World saves world again!!!!---------------------
-        if (positionpiece.IsPressed) { throw new ChessException("Hello World!"); }
-    }
+        ImageButton positionPiece = (ImageButton)sender;
+        string positionPieceConverted = ConvertPosition(positionPiece);
 
-    /*private void Match(ChessViewModel vm)
-    {
-        //BindingContext = vm;
-        while (!play.finished)
+        if (ChessPositions.ContainsKey(positionPieceConverted))
         {
-        FirstChoiceLoop:
-            Piece? clickedPiece1 = ClickedPiece(vm);
-            if (clickedPiece1 is Free) { goto FirstChoiceLoop; }
-            else if (clickedPiece1.color == play.Player)
+            if (isItTheFirstClick)
             {
-                    Piece? clickedPiece2 = ClickedPiece(vm);
-                    if (clickedPiece2 is Free) { play.MovePiece(clickedPiece1.position,clickedPiece2.position); }//vou ter de alterar para captar pecas apenas em lugares marcados(ponto.png)
-                    else if (clickedPiece2.color == play.Player)
-                    {
-                        throw new ChessException("Não podes captar a tua prórpia peça!");
-                    }
-                    else if (clickedPiece2.color != play.Player)
-                    {
-                    throw new FatalException("Não programei ainda.");
-                    }
+                isItTheFirstClick = false;
+                Piece pieceClicked = PiecePos(new Position(positionPieceConverted));
+
+                if (pieceClicked is Free) { isItTheFirstClick = true; }
+                else if (pieceClicked.color == play.PlayerColor) { firstPieceClicked = pieceClicked; }//vou ter de alterar para captar pecas apenas em lugares marcados(ponto.png) ou na class MovePiece
+                else if (pieceClicked.color != play.PlayerColor) { throw new ChessException("Não podes mover a peça do teu adversário!"); }
+                else { throw new FatalException("Não sei o que aconteceu! (linha 59 -- ChessPAge.xaml.cs)"); }
             }
-            else if (clickedPiece1.color != play.Player)
+            else
             {
-                throw new ChessException("Não podes mover a peça do teu adversário!");
+                isItTheFirstClick = true;//prepares for the next round
+                Piece pieceClicked = PiecePos(new Position(positionPieceConverted));
+
+                if (pieceClicked is Free || pieceClicked.color != play.PlayerColor) { play.PlayPieces(firstPieceClicked.position, pieceClicked.position); }
+                else if (pieceClicked.color == play.PlayerColor) { throw new ChessException("Não podes captar a tua prórpia peça!"); }
+                else { throw new FatalException("Não sei o que aconteceu! (linha 74 -- ChessPAge.xaml.cs)"); }
+
+                //tenho de mudar cor do jogador(já muda no metodo PlayPieces mas tenho de ver melhor)
             }
         }
-    }*/
+        else { throw new FatalException("A posição clicada não existe!"); }
 
-    /*private Piece ClickedPiece(ChessViewModel vm)
-    {
-        Position pos = new Position.Chess(vm.PressActions()).ToPosition();
-        return tab.PiecePosition(pos);
-
-    }*/
-
-    public void Add(Position.Chess p, string source)
-    {
-        //InitializeComponent();
-        ChessPositions[p.ToString()].Source = source;
+        //---------- Converts from a general Position to a well-defined one ----------\\
+        string ConvertPosition(ImageButton position)
+        {
+            foreach (KeyValuePair<string, ImageButton> ib in ChessPositions)
+            {
+                if (position == ib.Value) { return ib.Key; }
+            }
+            throw new FatalException("Posição não existe? Erro desconhecido...");
+        }
     }
 
-    public Piece Remove(Position.Chess p)
+    //---------- Adds the Position to the Board ----------\\
+    public void Add(Position p, string source)
+    {
+        //InitializeComponent();
+        ChessPositions[p.Chess()].Source = source;
+    }
+
+    //---------- Removes the Position from the Board ----------\\
+    public Piece Remove(Position p)
     {
         Piece piece;
 
@@ -94,45 +120,80 @@ public partial class ChessPage : ContentPage
         catch (ChessException ce) { throw new ChessException(ce.Message); }
         catch (FatalException fe) { throw new FatalException("Erro em PiecePos:" + fe); }
 
-        ChessPositions[p.ToString()].Source = "livre.png";
+        ChessPositions[p.Chess()].Source = "livre.png";
         piece.Captured();//pode ter um error porque cria uma replica da peca no tabuleiro
         return piece;
     }
 
-    public Piece PiecePos(Position.Chess p)
+    //---------- Displays the possible moves on the Board ----------\\
+    public void MoveOptions(params Position[] positions)
+    {
+        foreach (Position p in positions) { ChessPositions[p.Chess()].Source = "ponto.png"; }//"File: ponto.png" é o que retorna da source -- se der erro é por isso
+    }
+    public void MoveOptions(Position p)
+    {
+        ChessPositions[p.Chess()].Source = "ponto.png";
+    }
+
+    //---------- Returns the Piece to a given Position on the Board ----------\\
+    public Piece PiecePos(Position p)
     {
         Color color;
 
-        string source = ChessPositions[p.ToString()].Source.ToString();
+        string source = SourceFileName(ChessPositions[p.Chess()]);
         if (source == null) { throw new FatalException("A identificação posição deu nulo!"); }
         string nc = source.Split('.')[0];
 
-        if (nc == "ponto") { throw new ChessException("ponto"); }
-        if (nc == "livre") { throw new ChessException("livre"); }
+        if (nc == "ponto") { return new Free(tab, p, "ponto"); }
+        if (nc == "livre") { return new Free(tab, p, "livre"); }
 
         string[] info = nc.Split('_');
         if (info[1] == "p") { color = Color.Black; }
         else if (info[1] == "b") { color = Color.White; }
         else { throw new FatalException("Erro nas Cores."); }
+        return CreatePiece(p, info[0], color);//pode ter um error porque cria uma replica da peca no tabuleiro
+    }
 
-        Dictionary<string, Piece>? pieces = new Dictionary<string, Piece> {//pode ter um error porque cria uma replica da peca no tabuleiro
+    //---------- Creates a Piece with the provided characteristics ----------\\
+    /// <summary>
+    /// CreatePiece() returns a Piece with the given characteristics. Doesn't work when Piece is Free. 
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <param name="piecesNames"></param>
+    /// <param name="color"></param>
+    /// <returns></returns>
+    public Piece CreatePiece(Position pos, PiecesNames pieceName, Color color)//pode ter um error porque cria uma replica da peca no tabuleiro
+    {
+        Dictionary<string, Piece>? pieces = new Dictionary<string, Piece> {
             { "bispo", new Bispo(tab,color) }, { "cavalo", new Cavalo(tab, color) },
             { "torre", new Torre(tab, color) }, { "peao", new Peao(tab, color, play) },
-            { "rei", new Rei(tab, color, play) }, { "dama", new Dama(tab, color) }, {"free",new Free(tab) },
+            { "rei", new Rei(tab, color, play) }, { "dama", new Dama(tab, color) },
         };
-
-        pieces[info[0]].position = p.ToPosition();
-        return pieces[info[0]];
+        Piece newPiece = pieces[pieceName.ToString().ToLower().Trim()];
+        newPiece.position = pos;
+        return newPiece;
     }
-
-
-    public void MoveOptions(params Position.Chess[] positions)
+    /// <summary>
+    /// CreatePiece() returns a Piece with the given characteristics. Doesn't work when Piece is Free. 
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <param name="piecesNames"></param>
+    /// <param name="color"></param>
+    /// <returns></returns>
+    public Piece CreatePiece(Position pos, string pieceName, Color color)//pode ter um error porque cria uma replica da peca no tabuleiro
     {
-        foreach (Position.Chess p in positions) { ChessPositions[p.ToString()].Source = "ponto.png"; }
-    }
-    public void MoveOptions(Position.Chess p)
-    {
-        ChessPositions[p.ToString()].Source = "ponto.png";
+        Dictionary<string, Piece>? pieces = new Dictionary<string, Piece> {
+            { "bispo", new Bispo(tab,color) }, { "cavalo", new Cavalo(tab, color) },
+            { "torre", new Torre(tab, color) }, { "peao", new Peao(tab, color, play) },
+            { "rei", new Rei(tab, color, play) }, { "dama", new Dama(tab, color) },
+        };
+        if (pieceName == "livre" || pieceName == "ponto") { throw new FatalException("CreatePiece() returns a Piece with the given characteristics. Doesn't work when Piece is Free."); }
+        else if (!pieces.ContainsKey(pieceName)) { throw new FatalException("Unknow error!"); }
+
+        Piece newPiece = pieces[pieceName.ToLower().Trim()];
+        newPiece.position = pos;
+        return newPiece;
     }
 }
+
 

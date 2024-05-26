@@ -23,35 +23,35 @@ namespace Xadrez_TIC.Pieces
 
             Position pos = new Position(0, 0);
 
-            pos.DefineNewValues(position.row - 1, position.column - 2);
+            pos.DefineNewPositionValues(position.row - 1, position.column - 2);
             if (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
-            pos.DefineNewValues(position.row - 2, position.column - 1);
+            pos.DefineNewPositionValues(position.row - 2, position.column - 1);
             if (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
-            pos.DefineNewValues(position.row - 2, position.column + 1);
+            pos.DefineNewPositionValues(position.row - 2, position.column + 1);
             if (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
-            pos.DefineNewValues(position.row - 1, position.column + 2);
+            pos.DefineNewPositionValues(position.row - 1, position.column + 2);
             if (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
-            pos.DefineNewValues(position.row + 1, position.column + 2);
+            pos.DefineNewPositionValues(position.row + 1, position.column + 2);
             if (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
-            pos.DefineNewValues(position.row + 2, position.column + 1);
+            pos.DefineNewPositionValues(position.row + 2, position.column + 1);
             if (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
-            pos.DefineNewValues(position.row + 2, position.column - 1);
+            pos.DefineNewPositionValues(position.row + 2, position.column - 1);
             if (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }
-            pos.DefineNewValues(position.row + 1, position.column - 2);
+            pos.DefineNewPositionValues(position.row + 1, position.column - 2);
             if (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
             }

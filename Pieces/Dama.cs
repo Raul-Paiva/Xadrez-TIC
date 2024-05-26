@@ -23,83 +23,83 @@ namespace Xadrez_TIC.Pieces {
             Position pos = new Position(0, 0);
 
             // esquerda
-            pos.DefineNewValues(position.row, position.column - 1);
+            pos.DefineNewPositionValues(position.row, position.column - 1);
             while (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
                 if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
                     break;
                 }
-                pos.DefineNewValues(pos.row, pos.column - 1);
+                pos.DefineNewPositionValues(pos.row, pos.column - 1);
             }
 
             // direita
-            pos.DefineNewValues(position.row, position.column + 1);
+            pos.DefineNewPositionValues(position.row, position.column + 1);
             while (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
                 if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
                     break;
                 }
-                pos.DefineNewValues(pos.row, pos.column + 1);
+                pos.DefineNewPositionValues(pos.row, pos.column + 1);
             }
 
             // acima
-            pos.DefineNewValues(position.row - 1, position.column);
+            pos.DefineNewPositionValues(position.row - 1, position.column);
             while (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
                 if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
                     break;
                 }
-                pos.DefineNewValues(pos.row - 1, pos.column);
+                pos.DefineNewPositionValues(pos.row - 1, pos.column);
             }
 
             // abaixo
-            pos.DefineNewValues(position.row + 1, position.column);
+            pos.DefineNewPositionValues(position.row + 1, position.column);
             while (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
                 if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
                     break;
                 }
-                pos.DefineNewValues(pos.row + 1, pos.column);
+                pos.DefineNewPositionValues(pos.row + 1, pos.column);
             }
 
             // NO
-            pos.DefineNewValues(position.row - 1, position.column - 1);
+            pos.DefineNewPositionValues(position.row - 1, position.column - 1);
             while (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
                 if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
                     break;
                 }
-                pos.DefineNewValues(pos.row - 1, pos.column - 1);
+                pos.DefineNewPositionValues(pos.row - 1, pos.column - 1);
             }
 
             // NE
-            pos.DefineNewValues(position.row - 1, position.column + 1);
+            pos.DefineNewPositionValues(position.row - 1, position.column + 1);
             while (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
                 if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
                     break;
                 }
-                pos.DefineNewValues(pos.row - 1, pos.column + 1);
+                pos.DefineNewPositionValues(pos.row - 1, pos.column + 1);
             }
 
             // SE
-            pos.DefineNewValues(position.row + 1, position.column + 1);
+            pos.DefineNewPositionValues(position.row + 1, position.column + 1);
             while (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
                 if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
                     break;
                 }
-                pos.DefineNewValues(pos.row + 1, pos.column + 1);
+                pos.DefineNewPositionValues(pos.row + 1, pos.column + 1);
             }
 
             // SO
-            pos.DefineNewValues(position.row + 1, position.column - 1);
+            pos.DefineNewPositionValues(position.row + 1, position.column - 1);
             while (pos.IsPositionValid() && CanMove(pos)) {
                 mat[pos.row, pos.column] = true;
                 if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
                     break;
                 }
-                pos.DefineNewValues(pos.row + 1, pos.column - 1);
+                pos.DefineNewPositionValues(pos.row + 1, pos.column - 1);
             }
 
             return mat;

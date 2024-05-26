@@ -8,17 +8,40 @@ namespace Xadrez_TIC.Chess
         public int row { get; set; }
         public int column { get; set; }
 
+        public int chessRow { get; set; }
+        public char chessColumn { get; set; }
+
 
         //Regista as informacoes da coluna e linha da peca
         public Position(int row, int column)
         {
-            this.row = row;
-            this.column = column;
+            if (row >= 0 && row <= 7) { this.row = row; }
+            else throw new FatalException("As posiçãos não foram bem definidas!");
+            if (column >= 0 && column <= 7) { this.column = column; }
+            else throw new FatalException("As posiçãos não foram bem definidas!");
+            ToChessPosition();
         }
-        private Position() { }
 
         //Construtor para ser usado na subclasse Chess
-        private Position(int row, char column) { }
+        public Position(int chessRow, char chessColumn)
+        {
+            if (chessRow >= 1 && chessRow <= 8) { this.chessRow = chessRow; }
+            else throw new FatalException("As posiçãos não foram bem definidas!");
+            if (chessColumn >= 'a' && chessColumn <= 'h') { this.chessColumn = chessColumn; }
+            else throw new FatalException("As posiçãos não foram bem definidas!");
+            ToPosition();
+        }
+
+        public Position(string fullChessPosition)
+        {
+            int number;
+            fullChessPosition = fullChessPosition.Trim().ToLower();
+            char character = fullChessPosition[0];
+            try { number = int.Parse(fullChessPosition[1].ToString()); } catch (Exception e) { throw new FatalException("A posição é inválida!"); }
+            chessColumn = character;
+            chessRow = number;
+            ToPosition();
+        }
 
         //Cor da posicao no tabuleiro, ou seja, dos quadrados
         public Enums.Color PositionColor()
@@ -37,17 +60,43 @@ namespace Xadrez_TIC.Chess
         }
 
         //Define novos valores para a posicao
-        public void DefineNewValues(int row, int column)
+        public void DefineNewPositionValues(int row, int column)
         {
-            this.row = row;
-            this.column = column;
-
+            if (row >= 0 && row <= 7) { this.row = row; }
+            else throw new FatalException("As posiçãos não foram bem definidas!");
+            if (column >= 0 && column <= 7) { this.column = column; }
+            else throw new FatalException("As posiçãos não foram bem definidas!");
+            ToChessPosition();
+        }
+        public void DefineNewChessValues(int chessRow, char chessColumn)
+        {
+            if (chessRow >= 1 && chessRow <= 8) { this.chessRow = chessRow; }
+            else throw new FatalException("As posiçãos não foram bem definidas!");
+            if (chessColumn >= 'a' && chessColumn <= 'h') { this.chessColumn = chessColumn; }
+            else throw new FatalException("As posiçãos não foram bem definidas!");
+            ToPosition();
         }
 
-        public virtual Chess ToChessPosition()
+        private void ToPosition()
+        {
+            int i;
+            if (chessColumn == 'a') { i = 0; }
+            else if (chessColumn == 'b') { i = 1; }
+            else if (chessColumn == 'c') { i = 2; }
+            else if (chessColumn == 'd') { i = 3; }
+            else if (chessColumn == 'e') { i = 4; }
+            else if (chessColumn == 'f') { i = 5; }
+            else if (chessColumn == 'g') { i = 6; }
+            else if (chessColumn == 'h') { i = 7; }
+            else { throw new FatalException("Erro na conversão de integers para caracteres."); }
+            row = chessRow - 1;
+            column = i;
+        }
+
+        private void ToChessPosition()
         {
             char c;
-            if (column == 0) { c = 'a'; }//--------------------------------------------------------Possivel erro(nao sei se comeca no 0 ou no 1)-------------------------------------
+            if (column == 0) { c = 'a'; }
             else if (column == 1) { c = 'b'; }
             else if (column == 2) { c = 'c'; }
             else if (column == 3) { c = 'd'; }
@@ -57,7 +106,15 @@ namespace Xadrez_TIC.Chess
             else if (column == 7) { c = 'h'; }
             else { throw new FatalException("Erro na conversão de integers para caracteres."); }
 
-            return new Chess(9 - row, c);
+            chessRow = row + 1;
+            chessColumn = c;
+        }
+
+        public virtual bool IsPositionValid()
+        {
+            //Position
+            if (row < 0 || row >= 8 || column < 0 || column >= 8) { return false; }
+            else { return true; }
         }
 
         //Retorna a coluna e a linha da peca ou a posicao do tipo "a2"
@@ -68,16 +125,16 @@ namespace Xadrez_TIC.Chess
             + column;
         }
 
-        public virtual bool IsPositionValid()
+        public string Chess()
         {
-            //Position
-            if (row < 0 || row >= 8 || column < 0 || column >= 8) { return false; }
-            else { return true; }
+            return chessColumn.ToString()
+                + chessRow.ToString();
         }
 
-
+        /*
         public class Chess : Position
         {
+
             public int chessRow { get; set; }
             public char chessColumn { get; set; }
 
@@ -85,15 +142,17 @@ namespace Xadrez_TIC.Chess
             //Regista as informacoes da coluna e linha da peca
             public Chess(int row, char column) : base(row, column)
             {
-                chessRow = row;
-                chessColumn = column;
+                if (chessRow >= 1 && chessRow <= 8) { chessRow = row; }
+                else throw new FatalException("As posiçãos não foram bem definidas!");
+                if (chessColumn >= 'a' && chessColumn <= 'h') { chessColumn = column; }
+                else throw new FatalException("As posiçãos não foram bem definidas!");
             }
             public Chess(string fullPosition)
-            {                
+            {
                 int number;
-                fullPosition = fullPosition.Trim().ToLower();                
+                fullPosition = fullPosition.Trim().ToLower();
                 char character = fullPosition[0];
-                try { number = int.Parse(fullPosition[1].ToString()); } catch (Exception e) { throw new Exception("A posição é inválida!"); }
+                try { number = int.Parse(fullPosition[1].ToString()); } catch (Exception e) { throw new FatalException("A posição é inválida!"); }
                 chessColumn = character;
                 chessRow = number;
             }
@@ -102,7 +161,17 @@ namespace Xadrez_TIC.Chess
             //Entra com a posicao do tipo "a2" e sai com uma posicao do tipo posicao
             public Position ToPosition()
             {
-                return new Position(9 - chessRow, chessColumn - 'a');
+                int i;
+                if (chessColumn == 'a') { i = 0; }
+                else if (chessColumn == 'b') { i = 1; }
+                else if (chessColumn == 'c') { i = 2; }
+                else if (chessColumn == 'd') { i = 3; }
+                else if (chessColumn == 'e') { i = 4; }
+                else if (chessColumn == 'f') { i = 5; }
+                else if (chessColumn == 'g') { i = 6; }
+                else if (chessColumn == 'h') { i = 7; }
+                else { throw new FatalException("Erro na conversão de integers para caracteres."); }
+                return new Position(chessRow + 1, i);
             }
 
             public override sealed bool IsPositionValid()
@@ -130,6 +199,6 @@ namespace Xadrez_TIC.Chess
                 return chessColumn.ToString()
                 + chessRow.ToString();
             }
-        }
+        }*/
     }
 }
