@@ -49,8 +49,10 @@ public partial class ChessPage : ContentPage
         //---------- Main Game Properties ----------\\
         viewModel = vm;
         tab = new Board(this);
-        play = new ChessMatch(tab);
+        play = new ChessMatch(tab);        
         //-------------------------------------------\\
+
+        tab.BuildNewBoard();
     }
 
     //---------- Prepares the Source provided by xaml to be accepted by the code ----------\\

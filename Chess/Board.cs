@@ -23,15 +23,13 @@ namespace Xadrez_TIC.Chess
         {
             //---------- Main Board Properties ----------\\
             chessPage = chess;
-            PiecesPos = new Piece[rows, columns];
+            PiecesPos = new Piece[rows, columns];//pode estar mal, conta o 0 ou o 1?
             //---------------------------------------------\\
-
-            Build();//Build the Board with the initial Pieces
         }
 
 
         //---------- Build the Board with the initial Pieces ----------\\
-        private void Build()
+        public void BuildNewBoard()
         {
             //White Pieces
             AddPiece(new Position(1, 'a'), PiecesNames.Torre, Color.White, 1);
@@ -144,7 +142,9 @@ namespace Xadrez_TIC.Chess
             }
             else
             {
-                if (PiecesPos[pos.row, pos.column] == chessPage.PiecePos(pos))
+                Piece piece1 = chessPage.PiecePos(pos);
+                Piece piece2 = PiecesPos[pos.row, pos.column];
+                if (piece1.GetType() == piece2.GetType() && piece1.color == piece2.color && piece1.position.Equals(piece2.position))
                 {
                     return chessPage.PiecePos(pos);
                 }

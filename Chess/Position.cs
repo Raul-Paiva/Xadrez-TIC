@@ -11,6 +11,7 @@ namespace Xadrez_TIC.Chess
         public int chessRow { get; set; }
         public char chessColumn { get; set; }
 
+        public bool PositionValidity { get; set; }
 
         //Regista as informacoes da coluna e linha da peca
         public Position(int row, int column)
@@ -19,7 +20,7 @@ namespace Xadrez_TIC.Chess
             else throw new FatalException("As posiçãos não foram bem definidas!");
             if (column >= 0 && column <= 7) { this.column = column; }
             else throw new FatalException("As posiçãos não foram bem definidas!");
-            ToChessPosition();
+            if (IsPositionValid()) { ToChessPosition(); }
         }
 
         //Construtor para ser usado na subclasse Chess
@@ -29,7 +30,7 @@ namespace Xadrez_TIC.Chess
             else throw new FatalException("As posiçãos não foram bem definidas!");
             if (chessColumn >= 'a' && chessColumn <= 'h') { this.chessColumn = chessColumn; }
             else throw new FatalException("As posiçãos não foram bem definidas!");
-            ToPosition();
+            if (IsChessPositionValid()) { ToPosition(); }
         }
 
         public Position(string fullChessPosition)
@@ -40,7 +41,7 @@ namespace Xadrez_TIC.Chess
             try { number = int.Parse(fullChessPosition[1].ToString()); } catch (Exception e) { throw new FatalException("A posição é inválida!"); }
             chessColumn = character;
             chessRow = number;
-            ToPosition();
+            if (IsChessPositionValid()) { ToPosition(); }
         }
 
         //Cor da posicao no tabuleiro, ou seja, dos quadrados
@@ -62,19 +63,16 @@ namespace Xadrez_TIC.Chess
         //Define novos valores para a posicao
         public void DefineNewPositionValues(int row, int column)
         {
-            if (row >= 0 && row <= 7) { this.row = row; }
-            else throw new FatalException("As posiçãos não foram bem definidas!");
-            if (column >= 0 && column <= 7) { this.column = column; }
-            else throw new FatalException("As posiçãos não foram bem definidas!");
-            ToChessPosition();
+            this.row = row;
+            this.column = column;
+
+            if (IsPositionValid()) { ToChessPosition(); }
         }
         public void DefineNewChessValues(int chessRow, char chessColumn)
         {
-            if (chessRow >= 1 && chessRow <= 8) { this.chessRow = chessRow; }
-            else throw new FatalException("As posiçãos não foram bem definidas!");
-            if (chessColumn >= 'a' && chessColumn <= 'h') { this.chessColumn = chessColumn; }
-            else throw new FatalException("As posiçãos não foram bem definidas!");
-            ToPosition();
+            this.chessRow = chessRow;
+            this.chessColumn = chessColumn;
+            if (IsChessPositionValid()) { ToPosition(); }
         }
 
         private void ToPosition()
@@ -110,11 +108,28 @@ namespace Xadrez_TIC.Chess
             chessColumn = c;
         }
 
-        public virtual bool IsPositionValid()
+        public bool IsPositionValid()
         {
-            //Position
-            if (row < 0 || row >= 8 || column < 0 || column >= 8) { return false; }
-            else { return true; }
+            //Position Type
+            if (row <= 7 && row >= 0 && column <= 7 && column >= 0) { PositionValidity = true; return true; }
+            else { PositionValidity = false; return false; }
+        }
+        private bool IsChessPositionValid()
+        {
+            if (chessRow <= 8 && chessRow >= 1 && chessColumn <= 'h' && chessColumn >= 'a') { PositionValidity = true; return true; }
+            else { PositionValidity = false; return false; }
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null) { return false; }
+            if (obj is Position)
+            {
+                Position pos = (Position)obj;
+                if (pos.column == column && pos.row == row) { return true; }
+                else { return false; }
+            }
+            else { return false; }
         }
 
         //Retorna a coluna e a linha da peca ou a posicao do tipo "a2"

@@ -65,7 +65,7 @@ namespace Xadrez_TIC.Pieces {
                 if (pos.IsPositionValid() && free(pos)) {
                     mat[pos.row, pos.column] = true;
                 }
-                pos.DefineNewPositionValues(position.row + 2, position.column);
+                pos.DefineNewPositionValues(position.row + 2, position.column);//Erro
                 Position p2 = new Position(position.row + 1, position.column);
                 if (p2.IsPositionValid() && free(p2) && pos.IsPositionValid() && free(pos) && nMoves == 0) {
                     mat[pos.row, pos.column] = true;

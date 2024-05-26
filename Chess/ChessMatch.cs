@@ -1,4 +1,5 @@
 ﻿using Xadrez_TIC.Exceptions;
+using Xadrez_TIC.Enums;
 using Xadrez_TIC.Pieces;
 using Color = Xadrez_TIC.Enums.Color;
 
@@ -10,7 +11,6 @@ namespace Xadrez_TIC.Chess
         public int round { get; private set; }
         public Color PlayerColor { get; private set; }
         public bool finished { get; private set; }
-        private HashSet<Piece> pieces;//List of all the Pieces(including captured Pieces) 
         private HashSet<Piece> captured;
         public bool xeque { get; private set; }
         public Piece? EnPassant { get; private set; }
@@ -23,10 +23,8 @@ namespace Xadrez_TIC.Chess
             finished = false;
             xeque = false;
             EnPassant = null;
-            pieces = new HashSet<Piece>();
             captured = new HashSet<Piece>();
-            foreach (Piece x in tab.PiecesPos) { if (x != null) { pieces.Add(x); } }
-        }
+        }        
 
         public void CheckPositionOrigin(Position pos)
         {
@@ -245,11 +243,14 @@ namespace Xadrez_TIC.Chess
         {
             //---------- Add every piece with the provided color to inGamePieces ----------\\
             HashSet<Piece> inGamePieces = new HashSet<Piece>();
-            foreach (Piece x in pieces)
+            foreach (Piece x in tab.PiecesPos)
             {
-                if (x.color == color)
+                if (x != null)
                 {
-                    inGamePieces.Add(x);
+                    if (x.color == color)
+                    {
+                        inGamePieces.Add(x);
+                    }
                 }
             }
             //-------------------------------------------------------------------------------\\
@@ -322,8 +323,9 @@ namespace Xadrez_TIC.Chess
 
         public void PutNewPiece(char column, int row, Piece piece)
         {
-            tab.AddPiece(new Position(row, column), piece);
-            pieces.Add(piece);
+            Position pos = new Position(row, column);
+            tab.AddPiece(pos, piece);
+            tab.PiecesPos[pos.row, pos.column] = piece;
         }
 
         private Color oppositeColor(Color color)
