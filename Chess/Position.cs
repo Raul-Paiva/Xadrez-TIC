@@ -16,20 +16,18 @@ namespace Xadrez_TIC.Chess
         //Regista as informacoes da coluna e linha da peca
         public Position(int row, int column)
         {
-            if (row >= 0 && row <= 7) { this.row = row; }
-            else throw new FatalException("As posiçãos não foram bem definidas!");
-            if (column >= 0 && column <= 7) { this.column = column; }
-            else throw new FatalException("As posiçãos não foram bem definidas!");
+            this.row = row;
+            this.column = column;
+
             if (IsPositionValid()) { ToChessPosition(); }
         }
 
         //Construtor para ser usado na subclasse Chess
         public Position(int chessRow, char chessColumn)
         {
-            if (chessRow >= 1 && chessRow <= 8) { this.chessRow = chessRow; }
-            else throw new FatalException("As posiçãos não foram bem definidas!");
-            if (chessColumn >= 'a' && chessColumn <= 'h') { this.chessColumn = chessColumn; }
-            else throw new FatalException("As posiçãos não foram bem definidas!");
+            this.chessRow = chessRow;
+            this.chessColumn = chessColumn;
+
             if (IsChessPositionValid()) { ToPosition(); }
         }
 
