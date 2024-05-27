@@ -33,5 +33,10 @@ namespace Xadrez_TIC.Pieces
                     throw new FatalException("Erro na Enum PiecesList ou no Source.");
             }
         }
+        public static string PiecesSource(string piecesNames, Color c)
+        {
+            if (Color.White == c) return piecesNames + "_b.png";
+            else return piecesNames + "_p.png";
+        }
     }
 }

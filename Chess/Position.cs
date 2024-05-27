@@ -5,13 +5,13 @@ namespace Xadrez_TIC.Chess
 {
     public class Position
     {
-        public int row { get; set; }
-        public int column { get; set; }
+        public int row { get; private set; }
+        public int column { get; private set; }
 
-        public int chessRow { get; set; }
-        public char chessColumn { get; set; }
+        public int chessRow { get; private set; }
+        public char chessColumn { get; private set; }
 
-        public bool PositionValidity { get; set; }
+        public bool PositionValidity { get; private set; }
 
         //Regista as informacoes da coluna e linha da peca
         public Position(int row, int column)
@@ -36,7 +36,7 @@ namespace Xadrez_TIC.Chess
             int number;
             fullChessPosition = fullChessPosition.Trim().ToLower();
             char character = fullChessPosition[0];
-            try { number = int.Parse(fullChessPosition[1].ToString()); } catch (Exception e) { throw new FatalException("A posição é inválida!"); }
+            try { number = int.Parse(fullChessPosition[1].ToString()); } catch (Exception) { throw new FatalException("A posição é inválida!"); }
             chessColumn = character;
             chessRow = number;
             if (IsChessPositionValid()) { ToPosition(); }

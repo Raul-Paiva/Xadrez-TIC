@@ -37,7 +37,7 @@
 
         <StackLayout Grid.Row="1" Grid.Column="0">
             <!-- Tabuleiro de Xadrez -->
-            <Grid x:Name="ChessBoard" Padding="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Grid x:Name="ChessBoard" Padding="5" BackgroundColor="BurlyWood" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                 <!-- Linhas -->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -60,7 +60,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <!-- Posições Verdes -->
                 <Border Grid.Row="0" Grid.Column="1" BackgroundColor="Green">
                     <ImageButton x:Name="b8" Source="livre.png" Pressed="PressedOn" Style="{StaticResource ImageButtonStyle}"/>
@@ -260,9 +260,8 @@
         </StackLayout>
 
 
-
         <StackLayout Grid.Row="2" Grid.Column="0">
-
+            <Label x:Name="FinalLabel" Text="" FontSize="Large" TextColor="Red" HorizontalOptions="Center"></Label>
         </StackLayout>
     </Grid>
 </ContentPage>

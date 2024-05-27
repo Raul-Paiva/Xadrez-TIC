@@ -8,6 +8,7 @@ namespace Xadrez_TIC.Chess
     class ChessMatch
     {
         public Board tab { get; private set; }
+        public ChessPage chessPage { get; private set; }
         public int round { get; private set; }
         public Color PlayerColor { get; private set; }
         public bool finished { get; private set; }
@@ -15,16 +16,17 @@ namespace Xadrez_TIC.Chess
         public bool xeque { get; private set; }
         public Piece? EnPassant { get; private set; }
 
-        public ChessMatch(Board b)
+        public ChessMatch(ChessPage chessspage, Board b)
         {
             tab = b;
+            chessPage = chessspage;
             round = 1;
             PlayerColor = Color.White;
             finished = false;
             xeque = false;
             EnPassant = null;
             captured = new HashSet<Piece>();
-        }        
+        }
 
         public void CheckPositionOrigin(Position pos)
         {
@@ -47,19 +49,13 @@ namespace Xadrez_TIC.Chess
             }
 
             Piece p = tab.PiecePosition(destination);
-            /*
-            // #jogadaespecial promocao
-            if (p is Peao)
+
+            // Promotion --------------------------------------------------\\
+            if (p is Peao && ((p.color == Color.White && destination.row == 7) || (p.color == Color.Black && destination.row == 0)))
             {
-                if ((p.color == Color.White && destination.row == 0) || (p.color == Color.Black && destination.row == 7))
-                {
-                    p = tab.RemovePiece(destination);
-                    pieces.Remove(p);
-                    Piece dama = new Dama(tab, p.color);
-                    tab.AddPiece(destination, dama);
-                    pieces.Add(dama);
-                }
-            }*/
+                Promotion promoting = new Promotion(this,p);
+                promoting.Promote();
+            }
 
             if (IsXeque(oppositeColor(PlayerColor)))
             {
@@ -102,62 +98,67 @@ namespace Xadrez_TIC.Chess
         private Piece MovePiece(Position origin, Position destination)
         {
             Piece p = tab.RemovePiece(origin);
-            p.AddNMoves();
-            Piece capturedPiece = tab.RemovePiece(destination);
-            tab.AddPiece(destination, p);
-            if (capturedPiece is not Free)
+            if (p.IsPossibleMove(destination))
             {
-                captured.Add(capturedPiece);
-                capturedPiece.Captured();
-            }
-
-
-            //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            /*
-
-            //Roque Pequeno\\
-            if (p is Rei && destination.column == origin.column + 2)
-            {
-                Position origemT = new Position(origin.row, origin.column + 3);
-                Position destinoT = new Position(origin.row, origin.column + 1);
-                Piece T = tab.RemovePiece(origemT);
-                T.AddNMoves();
-                tab.AddPiece(destinoT, T);
-            }
-            //----------\\
-
-            //Roque Grande\\
-            if (p is Rei && destination.column == origin.column - 2)
-            {
-                Position origemT = new Position(origin.row, origin.column - 4);
-                Position destinoT = new Position(origin.row, origin.column - 1);
-                Piece T = tab.RemovePiece(origemT);
-                T.AddNMoves();
-                tab.AddPiece(destinoT, T);
-            }
-            //----------\\
-
-            //En Passant\\
-            if (p is Peao)
-            {
-                if (origin.column != destination.column && capturedPiece == null)
+                p.AddNMoves();
+                Piece capturedPiece = tab.RemovePiece(destination);
+                tab.AddPiece(destination, p);
+                if (capturedPiece is not Free)
                 {
-                    Position posP;
-                    if (p.color == Color.White)
-                    {
-                        posP = new Position(destination.row + 1, destination.column);
-                    }
-                    else
-                    {
-                        posP = new Position(destination.row - 1, destination.column);
-                    }
-                    capturedPiece = tab.RemovePiece(posP);
                     captured.Add(capturedPiece);
+                    capturedPiece.Captured();
                 }
+
+
+                //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                /*
+
+                //Roque Pequeno\\
+                if (p is Rei && destination.column == origin.column + 2)
+                {
+                    Position origemT = new Position(origin.row, origin.column + 3);
+                    Position destinoT = new Position(origin.row, origin.column + 1);
+                    Piece T = tab.RemovePiece(origemT);
+                    T.AddNMoves();
+                    tab.AddPiece(destinoT, T);
+                }
+                //----------\\
+
+                //Roque Grande\\
+                if (p is Rei && destination.column == origin.column - 2)
+                {
+                    Position origemT = new Position(origin.row, origin.column - 4);
+                    Position destinoT = new Position(origin.row, origin.column - 1);
+                    Piece T = tab.RemovePiece(origemT);
+                    T.AddNMoves();
+                    tab.AddPiece(destinoT, T);
+                }
+                //----------\\
+
+                //En Passant\\
+                if (p is Peao)
+                {
+                    if (origin.column != destination.column && capturedPiece == null)
+                    {
+                        Position posP;
+                        if (p.color == Color.White)
+                        {
+                            posP = new Position(destination.row + 1, destination.column);
+                        }
+                        else
+                        {
+                            posP = new Position(destination.row - 1, destination.column);
+                        }
+                        capturedPiece = tab.RemovePiece(posP);
+                        captured.Add(capturedPiece);
+                    }
+                }
+                //----------\\*/
+                //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                return capturedPiece;
             }
-            //----------\\*/
-            //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            return capturedPiece;
+            else { tab.AddPiece(origin, p); throw new ChessException("Não é possível mover a peça para essa posição. Considera outra estratégia!"); }
+
         }
 
         //Undo the move of a piece
@@ -260,10 +261,11 @@ namespace Xadrez_TIC.Chess
             return inGamePieces;
         }
 
+
         //---------- Checks if the Rei is Xeque ----------\\
         public bool IsXeque(Color color)
         {
-            Piece R = rei(color);//--------------Tenho de lidar com a excecao
+            Piece R = rei(color);
 
             foreach (Piece x in PiecesInGame(oppositeColor(color)))
             {//If the Rei position in the mat is true, it means it is possible to capture the Rei

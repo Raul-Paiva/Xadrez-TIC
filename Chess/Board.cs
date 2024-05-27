@@ -2,7 +2,6 @@
 using Xadrez_TIC.Pieces;
 using Color = Xadrez_TIC.Enums.Color;
 using Xadrez_TIC.Exceptions;
-using Microsoft.Maui.Controls;
 
 namespace Xadrez_TIC.Chess
 {
@@ -70,19 +69,21 @@ namespace Xadrez_TIC.Chess
 
         private void SetPiecesPos(Piece piece)
         {
-            if (piece.position == null) { throw new FatalException("Não podes definir uma peça em PiecesPos sem Posição!"); }
-            Position pos = piece.position;
+            Position? pos = piece.position;
+            if (pos == null) { throw new FatalException("Não podes definir uma peça em PiecesPos sem Posição!"); }
+            if (piece == null || piece is Free) { throw new FatalException("Não podes definir uma peça sem a peça!"); }
             PiecesPos[pos.row, pos.column] = piece;
         }
-        private void SetPiecesPos(Position pos, PiecesNames p, Color c)
+        private Piece RemovePiecesPos(Position pos)
         {
-            Piece piece = chessPage.CreatePiece(pos, p, c);
-            if (piece.position == null) { throw new FatalException("Não podes definir uma peça em PiecesPos sem Posição!"); }
-            PiecesPos[pos.row, pos.column] = piece;
-        }
-        private void RemovePiecesPos(Position pos)
-        {
-            PiecesPos[pos.row, pos.column] = null;//????????????Erro?????????
+            try
+            {
+                Piece removed = PiecesPos[pos.row, pos.column];
+                if (removed == null) { removed = chessPage.PiecePosOnBoard(pos); }
+                PiecesPos[pos.row, pos.column] = null;
+                return removed;
+            }
+            catch (Exception) { throw new FatalException("Erro ao Remover Peca da lista de pecas PiecesPos."); }
         }
 
 
@@ -90,21 +91,14 @@ namespace Xadrez_TIC.Chess
         private void AddPiece(Position pos, PiecesNames p, Color c, int i)//-----------------------------------------------------------------------------------------------------------\\
         {
             i = 1;//e so para diferenciar a construcao dos movimentos de pecas
+
             string color;
             if (c == Color.White) { color = "b"; }
             else if (c == Color.Black) { color = "p"; }
             else { throw new FatalException("Erro nas Cores."); }
+
             chessPage.Add(pos, p.ToString().ToLower() + "_" + color + ".png");
-            SetPiecesPos(pos, p, c);
-        }
-        public void AddPiece(Position pos, PiecesNames p, Color c)//-----------------------------------------------------------------------------------------------------------\\
-        {
-            string color;
-            if (c == Color.White) { color = "b"; }
-            else if (c == Color.Black) { color = "p"; }
-            else { throw new FatalException("Erro nas Cores."); }
-            chessPage.Add(pos, p.ToString().ToLower() + "_" + color + ".png");
-            SetPiecesPos(pos, p, c);
+            SetPiecesPos(chessPage.CreatePiece(pos, p, c));
         }
         public void AddPiece(Position pos, Piece p)//-----------------------------------------------------------------------------------------------------------\\
         {
@@ -112,46 +106,46 @@ namespace Xadrez_TIC.Chess
             if (p.color == Color.White) { color = "b"; }
             else if (p.color == Color.Black) { color = "p"; }
             else { throw new FatalException("Erro nas Cores."); }
-            chessPage.Add(pos, p.ToString().ToLower() + "_" + color + ".png");
+
             p.position = pos;
+            chessPage.Add(pos, p.ToString().ToLower() + "_" + color + ".png");
             SetPiecesPos(p);
         }
 
-
-
-
-
-
-
         public Piece RemovePiece(Position pos)//retorna peça retirada
         {
-            Piece removed;
-            try { removed = chessPage.Remove(pos); } catch (Exception) { throw new FatalException("Erro ao Remover Peca."); }
-            RemovePiecesPos(pos);
-            return removed;            
+            try
+            {
+                Piece removed = RemovePiecesPos(pos);
+                chessPage.Remove(pos);
+                return removed;
+            }
+            catch (FatalException fe) { throw new FatalException(fe.Message); }
+            catch (Exception) { throw new FatalException("Erro ao Remover Peca."); }
         }
 
 
 
-
+        /// <summary>
+        /// Returns the Registered Piece in the provided position.
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
         public Piece PiecePosition(Position pos)
         {
-            if (chessPage.PiecePos(pos) is Free)//não tem peca(e um ponto ou livre) --- não vai ser resgistrada em PiecesPos
+            if (chessPage.PiecePosOnBoard(pos) is Free && PiecesPos[pos.row, pos.column] == null)//não tem peca(e um ponto ou livre)
             {
-                return chessPage.PiecePos(pos);
-            }
-            else
-            {
-                Piece piece1 = chessPage.PiecePos(pos);
-                Piece piece2 = PiecesPos[pos.row, pos.column];
-                if (piece1.GetType() == piece2.GetType() && piece1.color == piece2.color && piece1.position.Equals(piece2.position))
-                {
-                    return chessPage.PiecePos(pos);
-                }
-                else { throw new FatalException("Erro a descobrir a posição da peca."); }
+                return chessPage.PiecePosOnBoard(pos);// return Free();
             }
 
 
+            Piece piece1 = chessPage.PiecePosOnBoard(pos);
+            Piece piece2 = PiecesPos[pos.row, pos.column];
+            if (piece1.GetType() == piece2.GetType() && piece1.color == piece2.color && piece1.position.Equals(piece2.position))
+            {
+                return piece2;
+            }
+            else { throw new FatalException("Erro a descobrir a posição da peca."); }
         }
 
 
@@ -159,17 +153,9 @@ namespace Xadrez_TIC.Chess
 
         public bool PieceExistence(Position pos)
         {
-            CheckPosition(pos);
             Piece piece = PiecePosition(pos);
-            return true;// testar se a peça existe (se é diferente de livre.png) ------------------------------------------------------------------------------------------\\
-        }
-
-        public void CheckPosition(Position pos)
-        {
-            if (!pos.IsPositionValid())
-            {
-                throw new ChessException();//------------------------------------------------------------------------------------------------------------------------------\\
-            }
+            if(piece is not Free) { return true; }
+            else { return false; }
         }
     }
 

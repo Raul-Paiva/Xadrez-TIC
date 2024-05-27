@@ -11,11 +11,6 @@ namespace Xadrez_TIC.Pieces {
             return "torre";
         }
 
-        private bool podeMover(Position pos) {
-            Piece p = tab.PiecePosition(pos);
-            return p == null || p.color != color;
-        }
-
         public override bool[,] PossibleMoves() {
             bool[,] mat = new bool[tab.rows, tab.columns];
 
@@ -23,42 +18,42 @@ namespace Xadrez_TIC.Pieces {
 
             // acima
             pos.DefineNewPositionValues(position.row - 1, position.column);
-            while (pos.IsPositionValid() && podeMover(pos)) {
+            while (pos.IsPositionValid() && IsFreeToMove(pos)) {
                 mat[pos.row, pos.column] = true;
-                if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
+                if (tab.PiecePosition(pos) is not Free && tab.PiecePosition(pos).color != color) {
                     break;
                 }
-                pos.row = pos.row - 1;
+                pos.DefineNewPositionValues(pos.row - 1, pos.column);
             }
 
             // abaixo
             pos.DefineNewPositionValues(position.row + 1, position.column);
-            while (pos.IsPositionValid() && podeMover(pos)) {
+            while (pos.IsPositionValid() && IsFreeToMove(pos)) {
                 mat[pos.row, pos.column] = true;
-                if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
+                if (tab.PiecePosition(pos) is not Free && tab.PiecePosition(pos).color != color) {
                     break;
                 }
-                pos.row  = pos.row + 1;
+                pos.DefineNewPositionValues(pos.row + 1, pos.column);
             }
 
             // direita
             pos.DefineNewPositionValues(position.row, position.column + 1);
-            while (pos.IsPositionValid() && podeMover(pos)) {
+            while (pos.IsPositionValid() && IsFreeToMove(pos)) {
                 mat[pos.row, pos.column] = true;
-                if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
+                if (tab.PiecePosition(pos) is not Free && tab.PiecePosition(pos).color != color) {
                     break;
                 }
-                pos.column = pos.column + 1;
+                pos.DefineNewPositionValues(pos.row, pos.column + 1);
             }
 
             // esquerda
             pos.DefineNewPositionValues(position.row, position.column - 1);
-            while (pos.IsPositionValid() && podeMover(pos)) {
+            while (pos.IsPositionValid() && IsFreeToMove(pos)) {
                 mat[pos.row, pos.column] = true;
-                if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
+                if (tab.PiecePosition(pos) is not Free && tab.PiecePosition(pos).color != color) {
                     break;
                 }
-                pos.column = pos.column - 1;
+                pos.DefineNewPositionValues(pos.row, pos.column - 1);
             }
 
             return mat;

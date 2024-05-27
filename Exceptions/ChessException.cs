@@ -5,9 +5,5 @@
         public ChessException(string message) : base(message)
         {
         }
-
-        public ChessException()
-        {
-        }
     }
 }

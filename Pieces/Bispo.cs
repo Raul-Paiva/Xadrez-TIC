@@ -11,11 +11,6 @@ namespace Xadrez_TIC.Pieces {
         public override string ToString() {
             return "bispo";
         }
-
-        private bool CanMove(Position pos) {
-            Piece p = tab.PiecePosition(pos);
-            return p == null || p.color != color;
-        }
         
         public override bool[,] PossibleMoves() {
             bool[,] mat = new bool[tab.rows, tab.columns];
@@ -24,9 +19,9 @@ namespace Xadrez_TIC.Pieces {
 
             // NO
             pos.DefineNewPositionValues(position.row - 1, position.column - 1);
-            while (pos.IsPositionValid() && CanMove(pos)) {
+            while (pos.IsPositionValid() && IsFreeToMove(pos)) {
                 mat[pos.row, pos.column] = true;
-                if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
+                if (tab.PiecePosition(pos) is not Free && tab.PiecePosition(pos).color != color) {
                     break;
                 }
                 pos.DefineNewPositionValues(pos.row - 1, pos.column - 1);
@@ -34,9 +29,9 @@ namespace Xadrez_TIC.Pieces {
 
             // NE
             pos.DefineNewPositionValues(position.row - 1, position.column + 1);
-            while (pos.IsPositionValid()  && CanMove(pos)) {
+            while (pos.IsPositionValid()  && IsFreeToMove(pos)) {
                 mat[pos.row, pos.column] = true;
-                if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
+                if (tab.PiecePosition(pos) is not Free && tab.PiecePosition(pos).color != color) {
                     break;
                 }
                 pos.DefineNewPositionValues(pos.row - 1, pos.column + 1);
@@ -44,9 +39,9 @@ namespace Xadrez_TIC.Pieces {
 
             // SE
             pos.DefineNewPositionValues(position.row + 1, position.column + 1);
-            while (pos.IsPositionValid() && CanMove(pos)) {
+            while (pos.IsPositionValid() && IsFreeToMove(pos)) {
                 mat[pos.row, pos.column] = true;
-                if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
+                if (tab.PiecePosition(pos) is not Free && tab.PiecePosition(pos).color != color) {
                     break;
                 }
                 pos.DefineNewPositionValues(pos.row + 1, pos.column + 1);
@@ -54,9 +49,9 @@ namespace Xadrez_TIC.Pieces {
 
             // SO
             pos.DefineNewPositionValues(position.row + 1, position.column - 1);
-            while (pos.IsPositionValid() && CanMove(pos)) {
+            while (pos.IsPositionValid() && IsFreeToMove(pos)) {
                 mat[pos.row, pos.column] = true;
-                if (tab.PiecePosition(pos) != null && tab.PiecePosition(pos).color != color) {
+                if (tab.PiecePosition(pos) is not Free && tab.PiecePosition(pos).color != color) {
                     break;
                 }
                 pos.DefineNewPositionValues(pos.row + 1, pos.column - 1);
