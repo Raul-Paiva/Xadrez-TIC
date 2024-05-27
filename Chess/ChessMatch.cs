@@ -50,12 +50,16 @@ namespace Xadrez_TIC.Chess
 
             Piece p = tab.PiecePosition(destination);
 
-            // Promotion --------------------------------------------------\\
+            //----------------------------------------------\\
+            //---------- Special Move - Promotion ----------\\
+            //----------------------------------------------\\
             if (p is Peao && ((p.color == Color.White && destination.row == 7) || (p.color == Color.Black && destination.row == 0)))
             {
                 Promotion promoting = new Promotion(this, p);
                 promoting.Promote();
             }
+            //----------------------------------------------\\
+
 
             if (IsXeque(oppositeColor(PlayerColor)))
             {
@@ -73,14 +77,7 @@ namespace Xadrez_TIC.Chess
             else
             {
                 round++;
-                if (PlayerColor == Color.White)
-                {
-                    PlayerColor = Color.Black;
-                }
-                else
-                {
-                    PlayerColor = Color.White;
-                }
+                PlayerColor = oppositeColor(PlayerColor);
             }
 
             //----------------------------------------------\\
@@ -99,7 +96,7 @@ namespace Xadrez_TIC.Chess
 
         //----------------------------------------------\\
         //---------- Special Move - EnPassant ----------\\
-        //----------------------------------------------\\ Nao esta a ser usado
+        //----------------------------------------------\\ 
         public bool IsCaptingWithEnPassant(Position origin, Position destination, Color pieceColor)
         {
             if (pieceColor == Color.Black)
@@ -125,6 +122,10 @@ namespace Xadrez_TIC.Chess
             }
             else throw new FatalException("Erro nas Cores!");
         }
+        //----------------------------------------------\\
+
+
+
 
         private Piece MovePiece(Position origin, Position destination)
         {
@@ -205,7 +206,7 @@ namespace Xadrez_TIC.Chess
         {
             Piece p = tab.RemovePiece(originalposdestination);//Remove the piece moved from it original destination position
             p.RemoveNMoves();//Remove the move from the nMoves list
-            if (capturedPiece is not Free || capturedPiece != null)//Tests if was captured any piece
+            if (capturedPiece is not Free)//Tests if was captured any piece
             {
                 tab.AddPiece(originalposdestination, capturedPiece);//Add the piece captured to it original position
                 captured.Remove(capturedPiece);//Remove the caputred piece from the captured list
@@ -216,7 +217,7 @@ namespace Xadrez_TIC.Chess
             //----------------------------------------------\\
             //---------- Special Move - EnPassant ----------\\
             //----------------------------------------------\\
-            if (p is Peao && capturedPiece is not Free)
+            if (p is Peao && (capturedPiece is not Free))
             {
                 if (originalposorigin.column != originalposdestination.column && capturedPiece == EnPassant)// sera que a peca continua registrada no EnPassant(nao sei)
                 {
