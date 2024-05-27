@@ -20,14 +20,15 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="gridWidth" Width="*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="{Binding Source={x:Reference gridWidth}, Path=Width}"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="gridWidth" Width="*"/>
-        </Grid.ColumnDefinitions>
+
 
         <StackLayout Grid.Row="0" Grid.Column="0">
 

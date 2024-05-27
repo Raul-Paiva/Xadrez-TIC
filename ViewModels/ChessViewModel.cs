@@ -8,6 +8,6 @@ namespace Xadrez_TIC.ViewModels
 {
     public partial class ChessViewModel : ObservableObject, INotifyPropertyChanged
     {
-        
+        //tentar criar algo para deixar a largura e altura do tabuleiro iguais
     }
 }
