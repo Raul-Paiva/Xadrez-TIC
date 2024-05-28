@@ -5,6 +5,7 @@ using Xadrez_TIC.Chess;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui;
 
+
 namespace Xadrez_TIC
 {
     public static class MauiProgram

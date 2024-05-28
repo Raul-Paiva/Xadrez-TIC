@@ -14,6 +14,7 @@
 		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
 
 		<OutputType>Exe</OutputType>
+		<OutputType Condition="$(TargetFramework.Contains('-windows'))">WinExe</OutputType>
 		<RootNamespace>Xadrez_TIC</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>

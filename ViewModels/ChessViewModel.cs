@@ -1,13 +1,26 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using Microsoft.Maui;
 using System.ComponentModel;
-using Xadrez_TIC.Exceptions;
-
 namespace Xadrez_TIC.ViewModels
 {
     public partial class ChessViewModel : ObservableObject, INotifyPropertyChanged
     {
-        //tentar criar algo para deixar a largura e altura do tabuleiro iguais
+        public GridLength ChessHeightDefinition { get; private set; }//tentar criar algo para deixar a largura e altura do tabuleiro iguais
+        public GridLength WidthDefinition { get; private set; }
+        private double screenHeight = DeviceDisplay.Current.MainDisplayInfo.Height;
+        private double screenWidth = DeviceDisplay.Current.MainDisplayInfo.Width;
+        public ChessViewModel()
+        {
+#if WINDOWS
+            screenHeight = screenHeight / 2;
+            WidthDefinition = screenHeight;
+            ChessHeightDefinition = screenHeight;
+#else
+            screenWidth = screenWidth / 3;//Strange but it works
+            WidthDefinition = screenWidth;
+            ChessHeightDefinition = screenWidth;
+#endif
+
+        }
+
     }
 }
