@@ -20,6 +20,7 @@ namespace Xadrez_TIC
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("Aubange Belgium Regular.ttf", "AubangeBelgiumRegular");
                 });
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<MainViewModel>();

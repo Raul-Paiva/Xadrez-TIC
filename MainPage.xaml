@@ -5,15 +5,43 @@
              xmlns:viewmodel="clr-namespace:Xadrez_TIC.ViewModels"
              x:DataType="viewmodel:MainViewModel">
 
-    <VerticalStackLayout
+    <Grid
         HorizontalOptions="Center" 
         VerticalOptions="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <HorizontalStackLayout Grid.Row="0" Grid.Column="0">
+            <Label VerticalOptions="CenterAndExpand" 
+                   FontSize="Medium" FontAttributes="Bold" 
+                   TextColor="White" Text="Jogador 1"/>
+            <Entry VerticalOptions="CenterAndExpand" WidthRequest="200" Margin="10" 
+                   FontSize="Medium" FontAttributes="Bold" 
+                   BackgroundColor="White" TextColor="Black" Text="{Binding NamePlayer1, Mode=OneWayToSource}"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Grid.Row="1" Grid.Column="0">
+            <Label VerticalOptions="CenterAndExpand" 
+                   FontSize="Medium" FontAttributes="Bold" 
+                   TextColor="White" Text="Jogador 2"/>
+            <Entry VerticalOptions="CenterAndExpand" WidthRequest="200" Margin="10" 
+                   FontSize="Medium" FontAttributes="Bold" 
+                   BackgroundColor="White" TextColor="Black" Text="{Binding NamePlayer2, Mode=OneWayToSource}"/>
+        </HorizontalStackLayout>
         <Button
-            Text="Start"
+            Text="Jogar"
+            TextColor="White"
+            FontAttributes="Bold"
+            FontSize="Medium"
             Command="{Binding PlayCommand}"
             BackgroundColor="Black"
-            VerticalOptions="Center"
-            HorizontalOptions="Center"/>
-    </VerticalStackLayout>
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="CenterAndExpand"
+            Grid.Row="2" Grid.Column="0"/>
+    </Grid>
 
 </ContentPage>

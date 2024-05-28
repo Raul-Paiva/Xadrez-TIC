@@ -25,7 +25,7 @@ public partial class ChessPage : ContentPage
     //---------------------------------------------\\
 
 
-    public ChessPage(ChessViewModel vm)
+    public ChessPage(ChessViewModel vm, MainViewModel Mvm)
     {
         //---------- Initializing and Binding Components ----------\\
         InitializeComponent();
@@ -52,6 +52,8 @@ public partial class ChessPage : ContentPage
         play = new ChessMatch(this, tab);
         //-------------------------------------------\\
 
+        SetLabelText("BlackPlayer",Mvm.Player1 );
+        SetLabelText("WhitePlayer", Mvm.Player2);
         tab.BuildNewBoard();
     }
 
@@ -77,7 +79,7 @@ public partial class ChessPage : ContentPage
             {
                 if (isItTheFirstClick)
                 {
-                    if (IsWarningOn) { IsWarningOn = false; SetFinalLabelText(""); }
+                    if (IsWarningOn) { IsWarningOn = false; SetLabelText("Warning", ""); }
 
                     isItTheFirstClick = false;
                     Piece pieceClicked = tab.PiecePosition(new Position(positionPieceConverted));
@@ -95,7 +97,7 @@ public partial class ChessPage : ContentPage
                 }
                 else
                 {
-                    if (IsWarningOn) { IsWarningOn = false; SetFinalLabelText(""); }
+                    if (IsWarningOn) { IsWarningOn = false; SetLabelText("Warning", ""); }
                     //HideMoveOptions(firstPieceClicked);
                     isItTheFirstClick = true;//prepares for the next round
                     Piece pieceClicked = tab.PiecePosition(new Position(positionPieceConverted));
@@ -121,7 +123,7 @@ public partial class ChessPage : ContentPage
                 throw new FatalException("Posição não existe? Erro desconhecido...");
             }
         }
-        catch (ChessException ce) { IsWarningOn = true; SetFinalLabelText(ce.Message); }
+        catch (ChessException ce) { IsWarningOn = true; SetLabelText("Warning",ce.Message); }
         finally
         {
             if (play.finished){
@@ -134,9 +136,25 @@ public partial class ChessPage : ContentPage
 
 
 
-    public void SetFinalLabelText(string text)
+    public void SetLabelText(string label, string text)
     {
-        FinalLabel.Text = text;
+        label = label.Trim().ToLower();
+        switch (label)
+        {
+            case "final":
+                FinalLabel.Text = text;
+                break;
+            case "warning":
+                WarningLabel.Text = text;
+                break;
+            case "blackplayer":
+                BlackPlayerLabel.Text = text;
+                break;
+            case "whiteplayer":
+                WhitePlayerLabel.Text = text;
+                break;
+            default: throw new FatalException("The Label does not exist.");
+        }
     }
 
     //---------- Adds the Position to the Board ----------\\
